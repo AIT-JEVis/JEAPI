@@ -57,7 +57,7 @@ public interface JEVisConstants {
         public static final int SOURCE = 4;
         public static final int SERVICE = 5;
         public static final int INPUT = 6;
-        public static final int DATA = 6;
+        public static final int DATA = 7;
         public static final int OWNER = 100;
         public static final int MEMBER_READ = 101;
         public static final int MEMBER_WRITE = 102;
