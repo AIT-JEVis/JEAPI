@@ -51,18 +51,51 @@ public interface JEVisConstants {
 
     public interface Relationship {
 
+        /**
+         * From child to Parent
+         */
         public static final int PARENT = 1;
         public static final int LINK = 2;
+        /**
+         * From Group to Root
+         */
         public static final int ROOT = 3;
+        /**
+         * From object to Source
+         */
         public static final int SOURCE = 4;
+        /**
+         * From object to source
+         */
         public static final int SERVICE = 5;
+        /**
+         * from object to Input
+         */
         public static final int INPUT = 6;
         public static final int DATA = 7;
+        /**
+         * From Object to Group
+         */
         public static final int OWNER = 100;
+        /**
+         * From User to Group
+         */
         public static final int MEMBER_READ = 101;
+        /**
+         * From User to Group
+         */
         public static final int MEMBER_WRITE = 102;
+        /**
+         * From User to Group
+         */
         public static final int MEMBER_EXCECUTE = 103;
+        /**
+         * From User to Group
+         */
         public static final int MEMBER_CREATE = 104;
+        /**
+         * From User to Group
+         */
         public static final int MEMBER_DELETE = 105;
     }
 
@@ -77,5 +110,11 @@ public interface JEVisConstants {
         public static final String USER_EMAIL = "Email";
         public static final String USER_SYS_ADMIN = "Sys Admin";
         public static final String USER_PASSWORD = "Password";
+    }
+
+    public interface Validity {
+
+        public static final int LAST = 0;
+        public static final int AT_DATE = 1;
     }
 }
