@@ -164,4 +164,12 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      * @param unique
      */
     void setUnique(boolean unique);
+
+    /**
+     * Delete this JEVisClass.
+     *
+     * @return
+     * @throws JEVisException
+     */
+    boolean delete() throws JEVisException;
 }
