@@ -28,7 +28,6 @@ import java.util.List;
  * JEObject cannot store any samples. Measurable attributes of an Object like
  * the build year of an building are stored in the JEAttribute.
  *
- * @see JEAttribute
  *
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -69,8 +68,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
      *
      * There can be unlimited JEObject entities from one JEObjectType.
      *
-     * @return Type of this JEObject as JEObjectType
-     * @see JEObjectType
+     * @return JEVisCalss
      */
     JEVisClass getJEVisClass() throws JEVisException;
 
@@ -93,8 +91,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
     /**
      * move this JEVisObject to an other parent
      */
-    void moveTo(JEVisObject newParent) throws JEVisException;
-
+//    void moveTo(JEVisObject newParent) throws JEVisException;
     /**
      * Returns all hierarchy children as an list of JEObject. The List will be
      * empty if this JEobject has no children.
@@ -112,7 +109,6 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
      * @param boolean incute inherit classes
      * @return List of all accessible JEObject from the same Type or inherit
      * type.
-     * @see JEObjectType
      */
     List<JEVisObject> getChildren(JEVisClass type, boolean inherit) throws JEVisException;
 
@@ -133,7 +129,6 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
      *
      * @param type
      * @return JEAttribute from the given JEAttributeType
-     * @see JEAttributeType
      */
     JEVisAttribute getAttribute(JEVisType type) throws JEVisException;
 
@@ -146,7 +141,6 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
      *
      * @param type
      * @return JEAttribute from the given JEAttributeType
-     * @see JEAttributeType
      */
     JEVisAttribute getAttribute(String type) throws JEVisException;
 
