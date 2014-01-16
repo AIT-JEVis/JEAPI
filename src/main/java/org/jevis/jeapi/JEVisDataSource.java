@@ -94,6 +94,14 @@ public interface JEVisDataSource {
      */
     JEVisClass getJEVisClass(String name) throws JEVisException;
 
+    /**
+     * Return all JEVisCalsses on the System
+     *
+     * @return
+     * @throws JEVisException
+     */
+    List<JEVisClass> getJEVisClasses() throws JEVisException;
+
 //    /**
 //     * Get an JEVisGroup by its unique ID
 //     *
