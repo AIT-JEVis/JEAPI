@@ -34,28 +34,28 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      *
      * @return
      */
-    String getName();
+    String getName() throws JEVisException;
 
     /**
      * Set The Name of this Class. Every class name is unique
      *
      * @param name
      */
-    void setName(String name);
+    void setName(String name) throws JEVisException;
 
     /**
      * Get the Icon representing this JEVisClass.
      *
      * @return
      */
-    ImageIcon getIcon();
+    ImageIcon getIcon() throws JEVisException;
 
     /**
      * Set the Icon representing this JEVisClass
      *
      * @param icon
      */
-    void setIcon(ImageIcon icon);
+    void setIcon(ImageIcon icon) throws JEVisException;
 
     /**
      * Get the descrition for this JEVisClass. THe description is an help text
@@ -63,21 +63,21 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      *
      * @return
      */
-    String getDescription();
+    String getDescription() throws JEVisException;
 
     /**
      * Set the description for this JEVisClass.
      *
      * @param discription
      */
-    void setDescription(String discription);
+    void setDescription(String discription) throws JEVisException;
 
     /**
      * Get all type whiche are present for this JEVisClass
      *
      * @return
      */
-    List<JEVisType> getTypes();
+    List<JEVisType> getTypes() throws JEVisException;
 
     /**
      * Get an spezific type by its unique name.
@@ -85,7 +85,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      * @param typename
      * @return
      */
-    JEVisType getType(String typename);
+    JEVisType getType(String typename) throws JEVisException;
 
     /**
      * Build and add an new type under this JEVisClass. Every type has to be
@@ -94,7 +94,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      * @param name
      * @return
      */
-    JEVisType buildType(String name);
+    JEVisType buildType(String name) throws JEVisException;
 
     /**
      * Get the inheritance class. This JEVisClass will inherit all types for all
@@ -103,7 +103,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      *
      * @return inheritance JEVisClass, null if it does not have an inheritance
      */
-    JEVisClass getInheritance();
+    JEVisClass getInheritance() throws JEVisException;
 
     /**
      * Get all heir classes.
@@ -113,34 +113,11 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
     List<JEVisClass> getHeirs() throws JEVisException;
 
     /**
-     * Set the inheritance class, if it does not have any set it to null
-     *
-     * @param jevisClass
-     */
-    void setInheritance(JEVisClass jevisClass);
-
-    /**
-     * Add an new valid parent. An valid parent will allow that an JEVisObject
-     * form this class can be createt under an other JEVIsOBject from the given
-     * type.
-     *
-     * @param jevisClass
-     */
-    void addValidParent(JEVisClass jevisClass);
-
-    /**
      * Get the list of all parents this class is allowed under
      *
      * @return list of valid parents, emty list if non exist
      */
-    List<JEVisClass> getValidParents();
-
-    /**
-     * Remove an valid parent for the list.
-     *
-     * @param jevisClass
-     */
-    void removeValidParent(JEVisClass jevisClass);
+    List<JEVisClass> getValidParents() throws JEVisException;
 
     /**
      * Check if this JEVisClass is allowed under the given JEVisClass
@@ -148,7 +125,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      * @param jevisClass
      * @return
      */
-    boolean isAllowedUnder(JEVisClass jevisClass);
+    boolean isAllowedUnder(JEVisClass jevisClass) throws JEVisException;
 
     /**
      * Check if thes JEVisClass has to be unique under one JEVisObject. This
@@ -156,14 +133,14 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      *
      * @return
      */
-    boolean isUnique();
+    boolean isUnique() throws JEVisException;
 
     /**
      * Set if the JEVisClass is unique under an other JEVisObject
      *
      * @param unique
      */
-    void setUnique(boolean unique);
+    void setUnique(boolean unique) throws JEVisException;
 
     /**
      * Delete this JEVisClass.
@@ -172,4 +149,50 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable {
      * @throws JEVisException
      */
     boolean delete() throws JEVisException;
+
+    /**
+     * Return all relationships this class has
+     *
+     * @return all relationships
+     * @throws JEVisException
+     */
+    List<JEVisClassRelationship> getRelationships() throws JEVisException;
+
+    /**
+     * Return all relationships from the given type
+     *
+     * @param type
+     * @return all relationships from the given type
+     * @throws JEVisException
+     */
+    List<JEVisClassRelationship> getRelationships(int type) throws JEVisException;
+
+    /**
+     * Return all relationships from the given type and direction
+     *
+     * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
+     * @param direction if Forward the he Class has to be the start, if Backward
+     * the class has to be the end
+     * @return all relationships from the given type and direction
+     * @throws JEVisException
+     */
+    List<JEVisClassRelationship> getRelationships(int type, int direction) throws JEVisException;
+
+    /**
+     * Create and commit relationship an other JEVisClayss
+     *
+     * @param obj
+     * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
+     * @param direction {@link org.jevis.jeapi.JEVisConstants.Direction}
+     * @return the new relationship
+     */
+    JEVisClassRelationship buildRelationship(JEVisClass jclass, int type, int direction) throws JEVisException;
+
+    /**
+     * Delete an relationship for this class
+     *
+     * @param rel
+     * @throws JEVisException
+     */
+    void deleteRelationship(JEVisClassRelationship rel) throws JEVisException;
 }

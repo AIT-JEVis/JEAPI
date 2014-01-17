@@ -20,7 +20,7 @@
 package org.jevis.jeapi;
 
 /**
- *
+ * This interface holds all JEVis constants.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
@@ -40,21 +40,33 @@ public interface JEVisConstants {
 
     public interface DisplayType {
 
-        public static final int LIST = 2;
+        public static final int TEXT_FIELD = 1;
+        public static final int TEXT_PASSWORD = 2;
+        public static final int NUMBER = 3;
+        public static final int DATE = 3;
     }
 
     public interface Direction {
 
+        /**
+         * From Object to target
+         */
         public static final int FORWARD = 0;
+        /**
+         * From Target to object
+         */
         public static final int BACKWARD = 1;
     }
 
-    public interface Relationship {
+    public interface ObjectRelationship {
 
         /**
          * From child to Parent
          */
         public static final int PARENT = 1;
+        /**
+         * From link to original
+         */
         public static final int LINK = 2;
         /**
          * From Group to Root
@@ -72,7 +84,14 @@ public interface JEVisConstants {
          * from object to Input
          */
         public static final int INPUT = 6;
+        /**
+         * From Object to Data
+         */
         public static final int DATA = 7;
+        /**
+         * from nestedt to parent
+         */
+        public static final int NESTEDT_CLASS = 8;
         /**
          * From Object to Group
          */
@@ -97,6 +116,22 @@ public interface JEVisConstants {
          * From User to Group
          */
         public static final int MEMBER_DELETE = 105;
+    }
+
+    public interface ClassRelationship {
+
+        /**
+         * From inherit to heir
+         */
+        public static final int INHERIT = 0;
+        /**
+         * From Host to nested
+         */
+        public static final int NESTEDT = 1;//better name = integrated?
+        /**
+         * From Class to Possible Parent
+         */
+        public static final int OK_PARENT = 3;
     }
 
     public interface Class {

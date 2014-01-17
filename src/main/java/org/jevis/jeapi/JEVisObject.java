@@ -219,7 +219,8 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable {
      * Return all relationships from the given type
      *
      * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
-     * @param direction {@link org.jevis.jeapi.JEVisConstants.Direction}
+     * @param direction if Forward the he Class has to be the start, if Backward
+     * the class has to be the end
      * @return
      * @throws JEVisException
      */
