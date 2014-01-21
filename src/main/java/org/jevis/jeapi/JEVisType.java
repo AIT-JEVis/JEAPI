@@ -25,43 +25,43 @@ import java.util.List;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisType extends JEVisComponent, JEVisCommittable {
+public interface JEVisType extends JEVisComponent, JEVisCommittable, Comparable<JEVisType> {
 
-    String getName();
+    String getName() throws JEVisException;
 
-    void setName(String name);
+    void setName(String name) throws JEVisException;
 
-    int getPrimitiveType();
+    int getPrimitiveType() throws JEVisException;
 
-    void setPrimitiveType(int type);
+    void setPrimitiveType(int type) throws JEVisException;
 
-    String getGUIDisplayType();
+    String getGUIDisplayType() throws JEVisException;
 
-    void setGUIDisplayType(String type);
+    void setGUIDisplayType(String type) throws JEVisException;
 
-    void setGUIPosition(int pos);
+    void setGUIPosition(int pos) throws JEVisException;
 
-    int getGUIPosition();
+    int getGUIPosition() throws JEVisException;
 
-    JEVisClass getJEVisClass();
+    JEVisClass getJEVisClass() throws JEVisException;
 
-    String getValidity();
+    String getValidity() throws JEVisException;
 
-    void setValidity(String isHistoric);
+    void setValidity(String isHistoric) throws JEVisException;
 
-    String getConfigurationValue();
+    String getConfigurationValue() throws JEVisException;
 
-    void setConfigurationValue(String value);
+    void setConfigurationValue(String value) throws JEVisException;
 
 //    List<JEVisDefaultSample> getDefaultSamples();
 //    void setDefaultSample(JEVisDefaultSample sample);
-    JEVisUnit getDefaultUnit();
+    JEVisUnit getDefaultUnit() throws JEVisException;
 
-    void setDefaultUnit(JEVisUnit unit);
+    void setDefaultUnit(JEVisUnit unit) throws JEVisException;
 
-    String getDescription();
+    String getDescription() throws JEVisException;
 
-    void setDescription(String discription);
+    void setDescription(String discription) throws JEVisException;
 
     boolean delete() throws JEVisException;
 }
