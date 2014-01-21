@@ -26,7 +26,7 @@ import javax.swing.ImageIcon;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisClass extends JEVisComponent, JEVisCommittable {
+public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable<JEVisClass> {
 
     /**
      * Set the name of this JEVisClass. The Class has to be unique.

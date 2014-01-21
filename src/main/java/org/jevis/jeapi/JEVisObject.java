@@ -32,7 +32,7 @@ import java.util.List;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisObject extends JEVisComponent, JEVisCommittable {
+public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparable<JEVisObject> {
 
     /**
      * Returns the name of the JEObject entity as String.

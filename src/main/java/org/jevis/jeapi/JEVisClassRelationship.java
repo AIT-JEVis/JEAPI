@@ -75,4 +75,12 @@ public interface JEVisClassRelationship {
      * @throws JEVisException
      */
     boolean isType(int type) throws JEVisException;
+
+    /**
+     * return if this Relationship is inherited from an other class
+     *
+     * @return CODE>true</CODE> if is inherited
+     * @throws JEVisException
+     */
+    boolean isInHerited() throws JEVisException;
 }

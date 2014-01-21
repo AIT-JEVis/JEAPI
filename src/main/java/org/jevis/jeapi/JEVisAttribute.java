@@ -30,7 +30,7 @@ import org.joda.time.Period;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisAttribute extends JEVisComponent {
+public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribute> {
 
     /**
      * Get the Name of the Attribute.The Name is uniqu under this JEVisObject
