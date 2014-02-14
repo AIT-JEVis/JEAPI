@@ -145,4 +145,14 @@ public interface JEVisDataSource {
      * @throws JEVisException
      */
     List<JEVisRelationship> getReplationships(int type) throws JEVisException;
+
+    /**
+     * Connect to the DataSource as an JEVis user
+     *
+     * @param username
+     * @param password
+     * @return
+     * @throws JEVisException
+     */
+    boolean connect(String username, String password) throws JEVisException;
 }
