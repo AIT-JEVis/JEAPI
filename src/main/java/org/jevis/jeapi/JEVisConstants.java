@@ -107,7 +107,7 @@ public interface JEVisConstants {
         /**
          * From User to Group
          */
-        public static final int MEMBER_EXCECUTE = 103;
+        public static final int MEMBER_EXECUTE = 103;
         /**
          * From User to Group
          */
@@ -127,7 +127,7 @@ public interface JEVisConstants {
         /**
          * From Host to nested
          */
-        public static final int NESTEDT = 1;//better name = integrated?
+        public static final int NESTED = 1;//better name = integrated?
         /**
          * From Class to Possible Parent
          */
