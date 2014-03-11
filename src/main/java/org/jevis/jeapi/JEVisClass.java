@@ -19,6 +19,7 @@
  */
 package org.jevis.jeapi;
 
+import java.io.File;
 import java.util.List;
 import javax.swing.ImageIcon;
 
@@ -56,6 +57,13 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * @param icon
      */
     void setIcon(ImageIcon icon) throws JEVisException;
+
+    /**
+     * Set the Icon representing this JEVisClass
+     *
+     * @param icon
+     */
+    void setIcon(File icon) throws JEVisException;
 
     /**
      * Get the descrition for this JEVisClass. THe description is an help text
