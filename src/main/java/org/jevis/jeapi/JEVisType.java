@@ -19,8 +19,6 @@
  */
 package org.jevis.jeapi;
 
-import java.util.List;
-
 /**
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -45,9 +43,9 @@ public interface JEVisType extends JEVisComponent, JEVisCommittable, Comparable<
 
     JEVisClass getJEVisClass() throws JEVisException;
 
-    String getValidity() throws JEVisException;
+    int getValidity() throws JEVisException;
 
-    void setValidity(String isHistoric) throws JEVisException;
+    void setValidity(int validity) throws JEVisException;
 
     String getConfigurationValue() throws JEVisException;
 
