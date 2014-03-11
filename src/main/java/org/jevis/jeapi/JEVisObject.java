@@ -225,4 +225,12 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
      * @throws JEVisException
      */
     List<JEVisRelationship> getRelationships(int type, int direction) throws JEVisException;
+
+    /**
+     * Return an list of all JEVisClass who ar allowd under this Object.
+     *
+     * @return
+     * @throws JEVisException
+     */
+    List<JEVisClass> getAllowedChildrenClasses() throws JEVisException;
 }
