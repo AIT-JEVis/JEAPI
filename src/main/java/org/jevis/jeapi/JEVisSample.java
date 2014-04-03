@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2013 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
@@ -45,7 +45,11 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
 
     Long getValueAsLong();
 
+    Long getValueAsLong(JEVisUnit unit);
+
     Double getValueAsDouble();
+
+    Double getValueAsDouble(JEVisUnit unit);
 
     Boolean getValueAsBoolean();
 
@@ -56,12 +60,22 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     JEVisMultiSelection getValueAsMultiSelection();
 
     /**
-     * Set the value of this sample.
+     * Set the value of this sample. The value has to be in default unit of the
+     * attribute
      *
      * @param value can be()
      * @throws ClassCastException
      */
     void setValue(Object value) throws ClassCastException;
+
+    /**
+     * Set the value of this samplein the given unit. The JEVisSample will try
+     * to convert the value to the daukt value for storage.
+     *
+     * @param value
+     * @param unit
+     */
+    void setValue(Object value, JEVisUnit unit) throws JEVisException, ClassCastException;
 
     /**
      *

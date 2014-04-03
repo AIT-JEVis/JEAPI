@@ -30,7 +30,9 @@ public interface JEVisUnit {
 
     JEVisUnit getSIUnit();
 
-    String getName();
+    String getSymbol();
 
-    void setName(String name);
+    boolean equals(JEVisUnit unit);
+
+    boolean isCompatible(JEVisUnit unit);
 }
