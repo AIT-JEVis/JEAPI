@@ -20,6 +20,7 @@
 package org.jevis.jeapi;
 
 import java.util.List;
+import javax.measure.unit.Unit;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
@@ -159,9 +160,26 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      */
     boolean deleteSamplesBetween(DateTime from, DateTime to) throws JEVisException;
 
-    JEVisUnit getUnit();
+    Unit getUnit() throws JEVisException;
 
-    void setUnit(JEVisUnit unit);
+    void setUnit(Unit unit) throws JEVisException;
+
+    /**
+     * Get the Alternativ Sybol for the Unit of this type
+     *
+     * @return
+     * @throws JEVisException
+     */
+    String getAlternativSymbol() throws JEVisException;
+
+    /**
+     * Set an alternative sybols for the unit of theis tpye
+     *
+     * @param symbol
+     * @return
+     * @throws JEVisException
+     */
+    void setAlternativSymbol(String symbol) throws JEVisException;
 
     //PeriodFormatter format = ISOPeriodFormat.standard();
     //format.parsePeriod(startText);
@@ -186,4 +204,5 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      * @return
      */
     long getSampleCount();
+
 }

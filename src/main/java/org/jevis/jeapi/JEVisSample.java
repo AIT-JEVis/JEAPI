@@ -19,6 +19,7 @@
  */
 package org.jevis.jeapi;
 
+import javax.measure.unit.Unit;
 import org.joda.time.DateTime;
 
 /**
@@ -32,32 +33,32 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      *
      * @return JevCalendar timestamp
      */
-    DateTime getTimestamp();
+    DateTime getTimestamp() throws JEVisException;
 
     /**
      * Returns the sample's value
      *
      * @return value of generic type T
      */
-    Object getValue();
+    Object getValue() throws JEVisException;
 
-    String getValueAsString();
+    String getValueAsString() throws JEVisException;
 
-    Long getValueAsLong();
+    Long getValueAsLong() throws JEVisException;
 
-    Long getValueAsLong(JEVisUnit unit);
+    Long getValueAsLong(Unit unit) throws JEVisException;
 
-    Double getValueAsDouble();
+    Double getValueAsDouble() throws JEVisException;
 
-    Double getValueAsDouble(JEVisUnit unit);
+    Double getValueAsDouble(Unit unit) throws JEVisException;
 
-    Boolean getValueAsBoolean();
+    Boolean getValueAsBoolean() throws JEVisException;
 
-    JEVisFile getValueAsFile();
+    JEVisFile getValueAsFile() throws JEVisException;
 
-    JEVisSelection getValueAsSelection();
+    JEVisSelection getValueAsSelection() throws JEVisException;
 
-    JEVisMultiSelection getValueAsMultiSelection();
+    JEVisMultiSelection getValueAsMultiSelection() throws JEVisException;
 
     /**
      * Set the value of this sample. The value has to be in default unit of the
@@ -66,7 +67,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * @param value can be()
      * @throws ClassCastException
      */
-    void setValue(Object value) throws ClassCastException;
+    void setValue(Object value) throws JEVisException, ClassCastException;
 
     /**
      * Set the value of this samplein the given unit. The JEVisSample will try
@@ -75,26 +76,34 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * @param value
      * @param unit
      */
-    void setValue(Object value, JEVisUnit unit) throws JEVisException, ClassCastException;
+    void setValue(Object value, Unit unit) throws JEVisException, ClassCastException;
 
     /**
      *
      * @return
      */
 //    JEVisManipulation getManipulation(); 
-    JEVisAttribute getAttribute();
+    JEVisAttribute getAttribute() throws JEVisException;
 
     /**
      * An human readable note for this sample.
      *
      * @return
      */
-    String getNote();
+    String getNote() throws JEVisException;
 
     /**
      * Set the human readable note for thi sample
      *
      * @param note
      */
-    void setNote(String note);
+    void setNote(String note) throws JEVisException;
+
+    /**
+     * Get the unit of sample
+     *
+     * @return
+     * @throws JEVisException
+     */
+    public Unit getUnit() throws JEVisException;
 }

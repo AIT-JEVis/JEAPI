@@ -19,9 +19,9 @@
  */
 package org.jevis.jeapi;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -49,14 +49,14 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      *
      * @return
      */
-    ImageIcon getIcon() throws JEVisException;
+    BufferedImage getIcon() throws JEVisException;
 
     /**
      * Set the Icon representing this JEVisClass
      *
      * @param icon
      */
-    void setIcon(ImageIcon icon) throws JEVisException;
+    void setIcon(BufferedImage icon) throws JEVisException;
 
     /**
      * Set the Icon representing this JEVisClass

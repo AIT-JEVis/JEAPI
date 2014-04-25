@@ -152,4 +152,5 @@ public interface JEVisConstants {
         public static final int LAST = 0;
         public static final int AT_DATE = 1;
     }
+
 }
