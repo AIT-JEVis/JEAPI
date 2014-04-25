@@ -91,7 +91,7 @@ public interface JEVisConstants {
         /**
          * from nestedt to parent
          */
-        public static final int NESTEDT_CLASS = 8;
+        public static final int NESTED_CLASS = 8;
         /**
          * From Object to Group
          */
