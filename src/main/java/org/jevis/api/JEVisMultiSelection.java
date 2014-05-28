@@ -1,13 +1,13 @@
 /**
  * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
  *
- * This file is part of JEAPI.
+ * This file is part of JECAPI.
  *
  * JEAPI is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
  * Foundation in version 3.
  *
- * JECAPI is distributed in the hope that it will be useful, but WITHOUT ANY
+ * JEAPI is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
@@ -17,13 +17,22 @@
  * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
  */
-package org.jevis.jeapi;
+package org.jevis.api;
+
+import java.util.List;
 
 /**
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisComponent {
+public interface JEVisMultiSelection {
 
-    JEVisDataSource getDataSource() throws JEVisException;
+    JEVisClass getFilteredClass() throws JEVisException;
+
+    List<JEVisObject> getSelectableObjects() throws JEVisException;
+
+    //TODO: ?implement mulyselect?
+    List<JEVisObject> getSelectedObjects() throws JEVisException;
+
+    void setSelectedObject(List<JEVisObject> objects) throws JEVisException;
 }

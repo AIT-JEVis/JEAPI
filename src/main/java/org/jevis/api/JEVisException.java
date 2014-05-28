@@ -17,7 +17,7 @@
  * JEDBI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
  */
-package org.jevis.jeapi;
+package org.jevis.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

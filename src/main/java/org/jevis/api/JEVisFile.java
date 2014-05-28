@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2013 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JECAPI.
  *
@@ -17,22 +17,33 @@
  * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
  */
-package org.jevis.jeapi;
+package org.jevis.api;
 
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisMultiSelection {
+public interface JEVisFile {
 
-    JEVisClass getFilteredClass() throws JEVisException;
+    void saveToFile(File file) throws IOException;
 
-    List<JEVisObject> getSelectableObjects() throws JEVisException;
+    void loadFromFile(File file) throws IOException;
 
-    //TODO: ?implement mulyselect?
-    List<JEVisObject> getSelectedObjects() throws JEVisException;
+    void setBytes(byte[] data);
 
-    void setSelectedObject(List<JEVisObject> objects) throws JEVisException;
+    byte[] getBytes();
+
+    String getFilename();
+
+    void setFilename(String name);
+
+    void setFileExtension(String extension);
+
+    String getFileExtension();
+    //TODO: ? is encoding come object? 
+//    void setEncoding(String encoding);
+//    String getEncoding();
 }

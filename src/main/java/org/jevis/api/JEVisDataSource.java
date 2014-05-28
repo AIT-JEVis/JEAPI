@@ -17,7 +17,7 @@
  * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
  */
-package org.jevis.jeapi;
+package org.jevis.api;
 
 import java.util.List;
 
@@ -155,4 +155,11 @@ public interface JEVisDataSource {
      * @throws JEVisException
      */
     boolean connect(String username, String password) throws JEVisException;
+
+    /**
+     * Return the JEAPI implementaion infos like name & version number
+     *
+     * @return
+     */
+    JEVisInfo getInfo();
 }
