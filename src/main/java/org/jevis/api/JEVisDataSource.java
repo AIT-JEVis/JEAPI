@@ -157,9 +157,33 @@ public interface JEVisDataSource {
     boolean connect(String username, String password) throws JEVisException;
 
     /**
+     * Close the Datasource connection
+     *
+     * @return
+     * @throws JEVisException
+     */
+    boolean disconnect() throws JEVisException;
+
+    /**
+     * Try to reconnect with the same user if the connection was lost
+     *
+     * @return
+     * @throws JEVisException
+     */
+    boolean reconnect() throws JEVisException;
+
+    /**
      * Return the JEAPI implementaion infos like name & version number
      *
      * @return
      */
     JEVisInfo getInfo();
+
+    /**
+     * returns true is the connection is still alive
+     *
+     * @return
+     * @throws JEVisException
+     */
+    boolean isConnectionAlive() throws JEVisException;
 }

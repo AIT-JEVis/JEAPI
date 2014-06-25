@@ -19,14 +19,12 @@
  */
 package org.jevis.api;
 
-import java.util.List;
-
 /**
  * This interface models the an relationship between two JEVisClasses
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisClassRelationship {
+public interface JEVisClassRelationship extends JEVisComponent {
 
     /**
      * Returns the start JEVisClass of this relationship
@@ -83,4 +81,5 @@ public interface JEVisClassRelationship {
      * @throws JEVisException
      */
     boolean isInHerited() throws JEVisException;
+
 }

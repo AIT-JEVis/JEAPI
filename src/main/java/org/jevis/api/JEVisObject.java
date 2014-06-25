@@ -105,8 +105,8 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
      * JEObjectType or all JEObjectTypes which inherit the type.
      *
      *
-     * @param JEVisClass requested type as JEObjectType
-     * @param boolean incute inherit classes
+     * @param type requested type as JEObjectType
+     * @param inherit incute inherit classes
      * @return List of all accessible JEObject from the same Type or inherit
      * type.
      */
@@ -170,14 +170,28 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     JEVisObject buildObject(String name, JEVisClass type) throws JEVisException;
 
     /**
+     * Build an new Linked Object from this Object under the given parent.
+     *
+     * @param name Name of the New linked JEVisObject
+     * @param parent Parent JEVisObject where the new linked JEVisOBject will be
+     * placed under. Parent has to be an View Directory or an other Link
+     * @return The new created link JEVisObject
+     * @throws JEVisException
+     */
+//    JEVisObject buildLink(String name, JEVisObject parent) throws JEVisException;
+    /**
      * Check if this JEVIsObject is an link to an other JEVIsObject. An link
      * will return the same attributes as the original linked
      *
      * @return
      */
-    boolean isLink();
-
-    //TODo: remove? is the a relationship type
+//    boolean isLink() throws JEVisException;
+    /**
+     * Get the JEVisObject this JEVisObject points to
+     *
+     * @return Linked JEVisOBject or null if its not linked
+     * @throws JEVisException
+     */
     JEVisObject getLinkedObject() throws JEVisException;
 
     /**
@@ -233,4 +247,15 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
      * @throws JEVisException
      */
     List<JEVisClass> getAllowedChildrenClasses() throws JEVisException;
+
+    /**
+     * Ceck if this object is allowed under thje given object.
+     *
+     * @param otherObject
+     * @return true if the object is allowed under the other object
+     *
+     * @throws JEVisException
+     */
+    boolean isAllowedUnder(JEVisObject otherObject) throws JEVisException;
+
 }
