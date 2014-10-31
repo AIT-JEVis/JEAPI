@@ -19,18 +19,48 @@
  */
 package org.jevis.api;
 
+import java.util.List;
+import javax.measure.unit.Unit;
+
 /**
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
 public interface JEVisUnit {
 
-    // ISO Standard?
-    boolean isSIUnit();
+    public static enum Type {
+
+        PRODUCT, ALTERNATIV, LABEL, BASE
+    }
+
+    /**
+     * Parse an Unit based on the "The Unified Code for Units of Measure"
+     *
+     *
+     * @param unit
+     * @see <a
+     * href="http://unitsofmeasure.org/trac/">http://unitsofmeasure.org</a>
+     * @return
+     */
+    JEVisUnit parseUnit(String unit);
+
+    JEVisUnit parseUnit(Unit unit);
 
     JEVisUnit getSIUnit();
 
+    /**
+     * Get the "The Unified Code for Units of Measure" conform Symbol for this
+     * unit
+     *
+     * @return
+     */
     String getSymbol();
+
+    String getLabel();
+
+    Type getType();
+
+    List<JEVisUnitRelationship> getRelationships();
 
     boolean equals(JEVisUnit unit);
 
