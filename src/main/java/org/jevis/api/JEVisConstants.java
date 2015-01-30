@@ -121,7 +121,7 @@ public interface JEVisConstants {
     public interface ClassRelationship {
 
         /**
-         * From inherit to heir
+         * From subclass to suberclass
          */
         public static final int INHERIT = 0;
         /**

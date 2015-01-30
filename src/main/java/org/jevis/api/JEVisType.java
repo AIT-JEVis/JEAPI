@@ -19,8 +19,6 @@
  */
 package org.jevis.api;
 
-import javax.measure.unit.Unit;
-
 /**
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -159,7 +157,7 @@ public interface JEVisType extends JEVisComponent, JEVisCommittable, Comparable<
      * @param unit
      * @throws JEVisException
      */
-    void setUnit(Unit unit) throws JEVisException;
+    void setUnit(JEVisUnit unit) throws JEVisException;
 
     /**
      * Return expected unit for this type. All values of Attributes from type
@@ -168,7 +166,7 @@ public interface JEVisType extends JEVisComponent, JEVisCommittable, Comparable<
      * @return
      * @throws JEVisException
      */
-    Unit getUnit() throws JEVisException;
+    JEVisUnit getUnit() throws JEVisException;
 
     /**
      * Get the Alternativ Sybol for the Unit of this type

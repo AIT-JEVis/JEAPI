@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JECAPI.
  *
@@ -19,50 +19,116 @@
  */
 package org.jevis.api;
 
-import java.util.List;
-import javax.measure.unit.Unit;
+import org.joda.time.Period;
 
 /**
+ * The JEVisUnit class handels the converting and labeling of the JEVisSamples
+ * values.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
 public interface JEVisUnit {
 
-    public static enum Type {
+    /**
+     * SI prefixes and NONE if no prefix is set
+     */
+    public static enum Prefix {
 
-        PRODUCT, ALTERNATIV, LABEL, BASE
+        NONE, ZETTA, EXA, PETA, TERA, GIGA, MEGA, NANO, PICO, KILO, HECTO, DEKA, DECI, CENTI, MILLI, MICRO, NANOPICO, FEMTO, ATTO, ZEPTO, YOCTO
     }
 
     /**
-     * Parse an Unit based on the "The Unified Code for Units of Measure"
-     *
-     *
-     * @param unit
-     * @see <a
-     * href="http://unitsofmeasure.org/trac/">http://unitsofmeasure.org</a>
-     * @return
-     */
-    JEVisUnit parseUnit(String unit);
-
-    JEVisUnit parseUnit(Unit unit);
-
-    JEVisUnit getSIUnit();
-
-    /**
-     * Get the "The Unified Code for Units of Measure" conform Symbol for this
-     * unit
+     * Returns the label of this unit.
      *
      * @return
      */
-    String getSymbol();
-
     String getLabel();
 
-    Type getType();
+    /**
+     * Set the label for this unit.
+     *
+     * @param label
+     */
+    void setLabel(String label);
 
-    List<JEVisUnitRelationship> getRelationships();
+    /**
+     * Convert an double value with this unit into the given unit.
+     *
+     * @param unit unit to convert to
+     * @param number number to convert
+     * @return
+     */
+    double converteTo(JEVisUnit unit, double number);
 
-    boolean equals(JEVisUnit unit);
+    /**
+     * Add an offset to this unit.
+     *
+     * @param offset
+     * @return
+     */
+    JEVisUnit plus(double offset);
 
+    /**
+     * Retuns an new Unit with the unit multiplying with the factor
+     *
+     * @param factor
+     * @return
+     */
+    JEVisUnit times(double factor);
+
+    /**
+     * Returns an product with this unit combined with the specified.
+     *
+     * @param factor
+     * @return
+     */
+    JEVisUnit times(JEVisUnit factor);
+
+    /**
+     * Returns an new Unit as an result of this unit deviedby the factor.
+     *
+     * @param factor
+     * @return
+     */
+    JEVisUnit divide(double factor);
+
+    /**
+     * Returns an new Unit as an result of this unit devied with the fator unit.
+     *
+     * @param factor
+     * @return
+     */
+    JEVisUnit divide(JEVisUnit factor);
+
+    /**
+     * Retuns true if this unit can be converted into the given unit.
+     *
+     * @param unit
+     * @return
+     */
     boolean isCompatible(JEVisUnit unit);
+
+    /**
+     * Set the Prefix for this Unit eg. Kilo, Mega, Giga...
+     *
+     * @param prefix
+     */
+    void setPrefix(Prefix prefix);
+
+    /**
+     * Retuns the current Prefix of this unit
+     *
+     * @return Prefix for unit, returns Prefix.NONE if no prefix is set
+     */
+    Prefix getPrefix();
+
+    /**
+     * Returns an JSON replresentaion of this Unit.
+     *
+     * @deprecated be careful using this function because it could be a
+     * temporary solution until the JEVisUnit design is final
+     * @return
+     */
+    String toJSON();
+
 }

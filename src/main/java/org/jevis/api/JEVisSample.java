@@ -42,22 +42,78 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      */
     Object getValue() throws JEVisException;
 
+    /**
+     * Retuns an String representation of this string.
+     *
+     * @return
+     * @throws JEVisException
+     */
     String getValueAsString() throws JEVisException;
 
+    /**
+     * Retunrs an long representaion of the value.
+     *
+     * @return
+     * @throws JEVisException
+     */
     Long getValueAsLong() throws JEVisException;
 
-    Long getValueAsLong(Unit unit) throws JEVisException;
+    /**
+     * Returns the value converted to the given unit.
+     *
+     * @param unit
+     * @return
+     * @throws JEVisException
+     */
+    Long getValueAsLong(JEVisUnit unit) throws JEVisException;
 
+    /**
+     * Returns an double representation of the value.
+     *
+     * @return
+     * @throws JEVisException
+     */
     Double getValueAsDouble() throws JEVisException;
 
-    Double getValueAsDouble(Unit unit) throws JEVisException;
+    /**
+     * Returns the value converted to the given unit.
+     *
+     * @param unit
+     * @return
+     * @throws JEVisException
+     */
+    Double getValueAsDouble(JEVisUnit unit) throws JEVisException;
 
+    /**
+     * Returns an boolean represenation of the value.
+     *
+     * @return
+     * @throws JEVisException
+     */
     Boolean getValueAsBoolean() throws JEVisException;
 
+    /**
+     * Returns an JEVisFile representaion of this value.
+     *
+     * @return
+     * @throws JEVisException
+     */
     JEVisFile getValueAsFile() throws JEVisException;
 
+    /**
+     * Returns an JEVisSelection representaion of this value.
+     *
+     * @return
+     * @throws JEVisException
+     */
     JEVisSelection getValueAsSelection() throws JEVisException;
 
+    /**
+     * Returns an JEVisMultiSelection representaion of this sample.
+     *
+     * @return
+     * @throws JEVisException
+     */
     JEVisMultiSelection getValueAsMultiSelection() throws JEVisException;
 
     /**
@@ -76,7 +132,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * @param value
      * @param unit
      */
-    void setValue(Object value, Unit unit) throws JEVisException, ClassCastException;
+    void setValue(Object value, JEVisUnit unit) throws JEVisException, ClassCastException;
 
     /**
      *
@@ -105,5 +161,5 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * @return
      * @throws JEVisException
      */
-    public Unit getUnit() throws JEVisException;
+    public JEVisUnit getUnit() throws JEVisException;
 }

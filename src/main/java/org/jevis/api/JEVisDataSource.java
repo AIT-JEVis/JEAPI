@@ -186,4 +186,13 @@ public interface JEVisDataSource {
      * @throws JEVisException
      */
     boolean isConnectionAlive() throws JEVisException;
+
+    /**
+     * Returns an list of all additional JEVisUnits installed on this system.
+     * The static default list of the most kommon units can be found in the
+     * JECommonss.s
+     *
+     * @return list of all additional JEVisUnits
+     */
+    List<JEVisUnit> getUnits();
 }

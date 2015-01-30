@@ -20,18 +20,17 @@
 package org.jevis.api;
 
 import java.util.List;
-import javax.measure.unit.Unit;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 /**
- * The JEVisAttribute is the initialize JEVis Type. An JEVisAttribute is allways
- * unique under an JEVisObject. The Aiitibute will be configured by its
+ * The JEVisAttribute is the initialize of an JEVisType. An JEVisAttribute is
+ * allways unique under an JEVisObject. The attibute will be configured by its
  * JEVisType.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribute> {
+public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Comparable<JEVisAttribute> {
 
     /**
      * Get the Name of the Attribute.The Name is uniqu under this JEVisObject
@@ -51,6 +50,7 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      * Get the JEVisType of this Attribute
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisType getType() throws JEVisException;
 
@@ -73,6 +73,7 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      *
      * m (>=)
      *
+     * @param from
      * @param to (<=)
      *
      * @return
@@ -89,8 +90,9 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
     int addSamples(List<JEVisSample> samples) throws JEVisException;
 
     /**
+     * Create an new JEViSample for this attribute with the Input Unit.
      *
-     * @param timestamp of the sample, null if now()
+     * @param ts of the sample, null if now()
      * @param value
      * @return
      * @throws JEVisException
@@ -98,14 +100,39 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
     JEVisSample buildSample(DateTime ts, Object value) throws JEVisException;
 
     /**
+     * Create an new JEViSample for this attribute in the given unit.
      *
-     * @param timestamp of the sample, null if now()
+     * @param ts of the sample, null if now()
+     * @param value
+     * @param unit
+     * @return
+     * @throws JEVisException
+     */
+    JEVisSample buildSample(DateTime ts, double value, JEVisUnit unit) throws JEVisException;
+
+    /**
+     * Create an new JEViSample for this attribute with an note.
+     *
+     * @param ts of the sample, null if now()
      * @param value
      * @param note
      * @return
      * @throws JEVisException
      */
     JEVisSample buildSample(DateTime ts, Object value, String note) throws JEVisException;
+
+    /**
+     * Create an new JEViSample for this attribute with an note in the the given
+     * unit.
+     *
+     * @param ts of the sample, null if now()
+     * @param value
+     * @param note
+     * @param unit
+     * @return
+     * @throws JEVisException
+     */
+    JEVisSample buildSample(DateTime ts, double value, String note, JEVisUnit unit) throws JEVisException;
 
     /**
      * Resive the lastest sample by date
@@ -117,6 +144,7 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
     /**
      * Get the primitiv type of the samples
      *
+     * @throws org.jevis.api.JEVisException
      * @see org.jevis.jeapi.JEVisConstants.PrimitiveType
      *
      * @return
@@ -148,6 +176,7 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      * Delete all samples this attribute may holds
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     boolean deleteAllSample() throws JEVisException;
 
@@ -157,43 +186,73 @@ public interface JEVisAttribute extends JEVisComponent, Comparable<JEVisAttribut
      * @param from (>=)
      * @param to (<=)
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     boolean deleteSamplesBetween(DateTime from, DateTime to) throws JEVisException;
 
-    Unit getUnit() throws JEVisException;
-
-    void setUnit(Unit unit) throws JEVisException;
-
     /**
-     * Get the Alternativ Sybol for the Unit of this type
+     * Returns the unit of this Attribute.
      *
      * @return
      * @throws JEVisException
      */
-    String getAlternativSymbol() throws JEVisException;
+    JEVisUnit getDisplayUnit() throws JEVisException;
 
     /**
-     * Set an alternative sybols for the unit of theis tpye
+     * Set the unit of this attribute.
      *
-     * @param symbol
-     * @return
+     * @param unit
      * @throws JEVisException
      */
-    void setAlternativSymbol(String symbol) throws JEVisException;
+    void setDisplayUnit(JEVisUnit unit) throws JEVisException;
 
-    //PeriodFormatter format = ISOPeriodFormat.standard();
-    //format.parsePeriod(startText);
     /**
-     * Period of the samples as ISO-8601 for example "P15m" are 15 minutes
+     * Returns the unit in which the data are stored in the datasource
+     *
+     * @return @throws JEVisException
+     */
+    JEVisUnit getInputUnit() throws JEVisException;
+
+    /**
+     * Set the Unit in which the data will be stored in the datasource
+     *
+     * @param unit
+     * @throws JEVisException
+     */
+    void setInputUnit(JEVisUnit unit) throws JEVisException;
+
+    /**
+     * Returns the default sample rate for the enduser represenation
      *
      * @return
      */
-    Period getPeriod();
+    Period getDisplaySampleRate();
+
+    /**
+     * returns the sample rate in which the data are stored in the datasource
+     *
+     * @return
+     */
+    Period getInputSampleRate();
+
+    /**
+     * Set the sample rate for in whoich the data are stored in the datasource
+     *
+     * @param period
+     */
+    void setInputSampleRate(Period period);
+
+    /**
+     * default sample rate for the enduser represenation
+     *
+     * @param period
+     */
+    void setDisplaySampleRate(Period period);
 
     /**
      * Ceck if the Attribute is from the given JEVisType
      *
-     * @param JEVisType the to check for
+     * @param type the to check for
      * @return
      */
     boolean isType(JEVisType type);
