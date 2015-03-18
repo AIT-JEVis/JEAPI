@@ -145,6 +145,7 @@ public interface JEVisConstants {
         public static final String USER_EMAIL = "Email";
         public static final String USER_SYS_ADMIN = "Sys Admin";
         public static final String USER_PASSWORD = "Password";
+        public static final String USER_ENABLED = "Enabled";
     }
 
     public interface Validity {
