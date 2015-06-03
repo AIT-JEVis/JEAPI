@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
