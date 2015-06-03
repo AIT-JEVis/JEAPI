@@ -26,14 +26,14 @@ package org.jevis.api;
 public interface JEVisInfo {
 
     /**
-     * Returns the version of the JEAPI Implementations
+     * Returns the version of the JEAPI Implementation
      *
      * @return
      */
     public String getVersion();
 
     /**
-     * Returns the name of the JEAPI implementaions
+     * Returns the name of the JEAPI implementation
      *
      * @return
      */

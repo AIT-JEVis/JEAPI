@@ -24,8 +24,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 /**
- * The JEVisAttribute is the initialize of an JEVisType. An JEVisAttribute is
- * allways unique under an JEVisObject. The attibute will be configured by its
+ * The JEVisAttribute is the basis of a JEVisType. A JEVisAttribute is
+ * always unique under a JEVisObject. The attribute will be configured by its
  * JEVisType.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -33,21 +33,21 @@ import org.joda.time.Period;
 public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Comparable<JEVisAttribute> {
 
     /**
-     * Get the Name of the Attribute.The Name is uniqu under this JEVisObject
+     * Get the Name of the attribute. The name is unique under this JEVisObject
      *
      * @return
      */
     String getName();
 
     /**
-     * Delte this object and remove all reference to it.
+     * Delete this object and remove all references to it.
      *
      * @return
      */
     boolean delete();
 
     /**
-     * Get the JEVisType of this Attribute
+     * Get the JEVisType of this attribute
      *
      * @return
      * @throws org.jevis.api.JEVisException
@@ -62,18 +62,16 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisObject getObject();
 
     /**
-     * resive all samples the attribute may hold
+     * Get all samples the attribute may hold
      *
      * @return
      */
     List<JEVisSample> getAllSamples();
 
     /**
-     * Resive all Samplaes from ">=" to "<=" a certain date @param fro
+     * Get all samples from ">=" to "<=" a certain date
      *
-     * m (>=)
-     *
-     * @param from
+     * @param from (>=)
      * @param to (<=)
      *
      * @return
@@ -90,9 +88,9 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     int addSamples(List<JEVisSample> samples) throws JEVisException;
 
     /**
-     * Create an new JEViSample for this attribute with the Input Unit.
+     * Create a new JEViSample for this attribute with the input unit.
      *
-     * @param ts of the sample, null if now()
+     * @param ts Timestamp of the sample, null if now()
      * @param value
      * @return
      * @throws JEVisException
@@ -100,7 +98,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisSample buildSample(DateTime ts, Object value) throws JEVisException;
 
     /**
-     * Create an new JEViSample for this attribute in the given unit.
+     * Create a new JEViSample for this attribute in the given unit.
      *
      * @param ts of the sample, null if now()
      * @param value
@@ -111,7 +109,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisSample buildSample(DateTime ts, double value, JEVisUnit unit) throws JEVisException;
 
     /**
-     * Create an new JEViSample for this attribute with an note.
+     * Create an new JEViSample for this attribute with a note.
      *
      * @param ts of the sample, null if now()
      * @param value
@@ -122,7 +120,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisSample buildSample(DateTime ts, Object value, String note) throws JEVisException;
 
     /**
-     * Create an new JEViSample for this attribute with an note in the the given
+     * Create an new JEViSample for this attribute with a note in the the given
      * unit.
      *
      * @param ts of the sample, null if now()
@@ -135,14 +133,14 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisSample buildSample(DateTime ts, double value, String note, JEVisUnit unit) throws JEVisException;
 
     /**
-     * Resive the lastest sample by date
+     * Get the latest sample by date
      *
      * @return
      */
     JEVisSample getLatestSample();
 
     /**
-     * Get the primitiv type of the samples
+     * Get the primitive type of the samples
      *
      * @throws org.jevis.api.JEVisException
      * @see org.jevis.jeapi.JEVisConstants.PrimitiveType
@@ -152,21 +150,21 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     int getPrimitiveType() throws JEVisException;
 
     /**
-     * Returns true if the attribute holds anay samples
+     * Returns true if the attribute holds any samples
      *
      * @return
      */
     boolean hasSample();
 
     /**
-     * Get the Timestamp from the first sample of the attribute
+     * Get the timestamp from the first sample of the attribute
      *
      * @return
      */
     DateTime getTimestampFromFirstSample();
 
     /**
-     * Get the last Timetsmap of the attribute
+     * Get the last timestamp of the attribute
      *
      * @return
      */
@@ -181,7 +179,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     boolean deleteAllSample() throws JEVisException;
 
     /**
-     * Deletes all Samples from ">=" to "<=" a certain date
+     * Deletes all samples from ">=" to "<=" a certain date
      *
      * @param from (>=)
      * @param to (<=)
@@ -191,7 +189,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     boolean deleteSamplesBetween(DateTime from, DateTime to) throws JEVisException;
 
     /**
-     * Returns the unit of this Attribute.
+     * Returns the displayed unit of this attribute.
      *
      * @return
      * @throws JEVisException
@@ -199,7 +197,7 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     JEVisUnit getDisplayUnit() throws JEVisException;
 
     /**
-     * Set the unit of this attribute.
+     * Set the displayed unit of this attribute.
      *
      * @param unit
      * @throws JEVisException
@@ -207,14 +205,14 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     void setDisplayUnit(JEVisUnit unit) throws JEVisException;
 
     /**
-     * Returns the unit in which the data are stored in the datasource
+     * Returns the unit in which the data is stored in the datasource
      *
      * @return @throws JEVisException
      */
     JEVisUnit getInputUnit() throws JEVisException;
 
     /**
-     * Set the Unit in which the data will be stored in the datasource
+     * Set the Unit in which the data will be stored in the data-source
      *
      * @param unit
      * @throws JEVisException
@@ -222,37 +220,37 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
     void setInputUnit(JEVisUnit unit) throws JEVisException;
 
     /**
-     * Returns the default sample rate for the enduser represenation
+     * Returns the default sample rate for the end-user representation
      *
      * @return
      */
     Period getDisplaySampleRate();
 
     /**
-     * returns the sample rate in which the data are stored in the datasource
+     * returns the sample rate in which the data is stored in the data-source
      *
      * @return
      */
     Period getInputSampleRate();
 
     /**
-     * Set the sample rate for in whoich the data are stored in the datasource
+     * Set the sample rate for in which the data is stored in the data-source
      *
      * @param period
      */
     void setInputSampleRate(Period period);
 
     /**
-     * default sample rate for the enduser represenation
+     * default sample rate for the end-user representation
      *
      * @param period
      */
     void setDisplaySampleRate(Period period);
 
     /**
-     * Ceck if the Attribute is from the given JEVisType
+     * Check if the attribute is from the given JEVisType
      *
-     * @param type the to check for
+     * @param type the type to check for
      * @return
      */
     boolean isType(JEVisType type);

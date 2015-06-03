@@ -26,16 +26,18 @@ package org.jevis.api;
 public interface JEVisRelationship {
 
     /**
-     * Retruns the start node of the relationship.
+     * Returns the start node of the relationship.
      *
-     * @return the start node of the relationship
+     * @return Start node of the relationship
+     * @throws org.jevis.api.JEVisException
      */
     JEVisObject getStartObject() throws JEVisException;
 
     /**
-     * Returns the end node of the relationship .
+     * Returns the end node of the relationship.
      *
      * @return the end node of the relationship
+     * @throws org.jevis.api.JEVisException
      */
     JEVisObject getEndObject() throws JEVisException;
 
@@ -43,6 +45,7 @@ public interface JEVisRelationship {
      * Returns both Objects of this relationship
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisObject[] getObjects() throws JEVisException;
 
@@ -51,20 +54,23 @@ public interface JEVisRelationship {
      *
      * @param object the other JEVisObject
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisObject getOtherObject(JEVisObject object) throws JEVisException;
 
     /**
-     * Returns the type of this replationship
+     * Returns the type of this relationship
      *
+     * @throws org.jevis.api.JEVisException
      * @see org.jevis.jeapi.JEVisConstants.Relationship
-     * @return type of this replationship
+     * @return Type of this relationship
      */
     int getType() throws JEVisException;
 
     /**
      * Checks if this relationship is from the given type
      *
+     * @throws org.jevis.api.JEVisException
      * @see org.jevis.jeapi.JEVisConstants.Relationship
      * @param type
      * @return

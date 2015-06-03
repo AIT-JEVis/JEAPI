@@ -61,7 +61,7 @@ public interface JEVisConstants {
     public interface ObjectRelationship {
 
         /**
-         * From child to Parent
+         * From child to parent
          */
         public static final int PARENT = 1;
         /**
@@ -69,51 +69,51 @@ public interface JEVisConstants {
          */
         public static final int LINK = 2;
         /**
-         * From Group to Root
+         * From group to root
          */
         public static final int ROOT = 3;
         /**
-         * From object to Source
+         * From object to source
          */
         public static final int SOURCE = 4;
         /**
-         * From object to source
+         * From object to service
          */
         public static final int SERVICE = 5;
         /**
-         * from object to Input
+         * from object to input
          */
         public static final int INPUT = 6;
         /**
-         * From Object to Data
+         * From object to data
          */
         public static final int DATA = 7;
         /**
-         * from nestedt to parent
+         * from nested to parent
          */
         public static final int NESTED_CLASS = 8;
         /**
-         * From Object to Group
+         * From object to group
          */
         public static final int OWNER = 100;
         /**
-         * From User to Group
+         * From user to group
          */
         public static final int MEMBER_READ = 101;
         /**
-         * From User to Group
+         * From user to group
          */
         public static final int MEMBER_WRITE = 102;
         /**
-         * From User to Group
+         * From user to group
          */
         public static final int MEMBER_EXECUTE = 103;
         /**
-         * From User to Group
+         * From user to group
          */
         public static final int MEMBER_CREATE = 104;
         /**
-         * From User to Group
+         * From user to group
          */
         public static final int MEMBER_DELETE = 105;
     }
@@ -121,15 +121,15 @@ public interface JEVisConstants {
     public interface ClassRelationship {
 
         /**
-         * From subclass to suberclass
+         * From subclass to superclass
          */
         public static final int INHERIT = 0;
         /**
-         * From Host to nested
+         * From host to nested
          */
         public static final int NESTED = 1;//better name = integrated?
         /**
-         * From Class to Possible Parent
+         * From class to possible parent
          */
         public static final int OK_PARENT = 3;
     }
