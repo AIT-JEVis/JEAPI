@@ -24,18 +24,16 @@ import java.util.List;
 /**
  * This interface represents an JEVis Object.
  *
- * Examples for an object are an customer, measurement device or an building. An
- * JEObject cannot store any samples. Measurable attributes of an Object like
- * the build year of an building are stored in the JEAttribute.
- *
- *
+ * Examples for an object are a customer, a measurement device or a building. An
+ * JEVisObject cannot store any samples. Measurable attributes of an object like
+ * the build year of an building are stored in JEVisAttribute.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
 public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparable<JEVisObject> {
 
     /**
-     * Returns the name of the JEObject entity as String.
+     * Returns the name of the JEVisObject entity as String.
      *
      * Names are not unique in the JEVis system. For an unique use the ID.
      *
@@ -44,48 +42,52 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     String getName();
 
     /**
-     * Set the name of the JEObject.
+     * Set the name of the JEVisObject.
      *
      * @param name
+     * @throws org.jevis.api.JEVisException
      */
     void setName(String name) throws JEVisException;
 
     /**
-     * Returns the unique identifier of this JEObject entity. The same ID cannot
-     * appear twice on the same JEVis server. Its possible and very likey that
+     * Returns the unique identifier of this JEVisObject entity. The same ID cannot
+     * appear twice on the same JEVis server. Its possible and very likely that
      * the same ID appear on different JEVis server.
      *
-     * The ID cannot be set by the client an will be give from the server.
+     * The ID cannot be set by the client an will be given from the server.
      *
      * @return identifier as Long
      */
     Long getID();
 
     /**
-     * Returns the JEVis Object Type of this JEObject entity. Every JEObject is
-     * from a certain Type which describes the Object attributes and its
+     * Returns the JEVis Object Type of this JEVisObject entity. Every JEVisObject
+     * is from a certain Type which describes the object attributes and its
      * handling.
      *
-     * There can be unlimited JEObject entities from one JEObjectType.
+     * There can be unlimited JEVisObject entities from one JEVisObjectType.
      *
      * @return JEVisCalss
+     * @throws org.jevis.api.JEVisException
      */
     JEVisClass getJEVisClass() throws JEVisException;
 
     /**
-     * Returns hierarchy parent of this JEObject entity.
+     * Returns hierarchy parent of this JEVisObject entity.
      *
-     * The JEObject are stored in tree like structure where every JEObject can
-     * have unlimited JEObject children but just one JEObject parent.
+     * The JEVisObject is stored in tree like structure where every JEVisObject
+     * can have an unlimited amount of JEVisObject-children but just one
+     * JEVisObject-parent.
      *
-     * @return Parent as JEObject
+     * @return Parent as JEVisObject
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisObject> getParents() throws JEVisException;
 
     /**
-     * Set the parent JEObject.
+     * Set the parent JEVisObject.
      *
-     * @param object parent as JEObject
+     * @param object parent as JEVisObject
      */
 //    void setParent(JEVisObject object) throws JEVisException;
     /**
@@ -93,99 +95,88 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
      */
 //    void moveTo(JEVisObject newParent) throws JEVisException;
     /**
-     * Returns all hierarchy children as an list of JEObject. The List will be
+     * Returns all hierarchy children as a list of JEVisObject. The List will be
      * empty if this JEobject has no children.
      *
-     * @return List of all JEObject children
+     * @return List of all JEVisObject children
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisObject> getChildren() throws JEVisException;
 
     /**
-     * Returns all children as an List of JEObject from the certain given
-     * JEObjectType or all JEObjectTypes which inherit the type.
+     * Returns all children as a List of JEVisObject from the certain given
+     * JEVisObjectType or all JEVisObjectTypes which inherit the type.
      *
-     *
-     * @param type requested type as JEObjectType
-     * @param inherit incute inherit classes
-     * @return List of all accessible JEObject from the same Type or inherit
+     * @param type Requested type as JEVisObjectType
+     * @param inherit Include inherited classes
+     * @return List of all accessible JEVisObject from the same Type or inherit
      * type.
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisObject> getChildren(JEVisClass type, boolean inherit) throws JEVisException;
 
     /**
-     * Returns a List of all JEAttribute which the JEObjectType of this JEObject
-     * entity has. If an JEAttribute is not set the default value will returned.
+     * Returns a List of all JEVisAttributes of this JEVisObject.
+     * If a JEVisAttribute is not set the default value will be returned.
      *
-     * @return List of JEAttribute which this JEObject have.
+     * @return List of JEVisAttributes which this JEVisObject has.
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisAttribute> getAttributes() throws JEVisException;
 
     /**
-     * Returns an specific JEAttribute which is of the given JEAttributeType. If
-     * the JEAttribute is not set the default values will returned.
+     * Returns an specific JEVisAttribute which is of the given JEVisType.
+     * If the JEVisAttribute is not set the default value will be returned.
      *
      * Will return an Exception if the JEAttributeType is not allowed unter the
-     * JEObjectType
+     * JEVisObjectType
      *
      * @param type
      * @return JEAttribute from the given JEAttributeType
+     * @throws org.jevis.api.JEVisException
      */
     JEVisAttribute getAttribute(JEVisType type) throws JEVisException;
 
     /**
-     * Returns an specific JEAttribute. If the JEAttribute is not set the
-     * default values will returned.
+     * Returns a specific JEVisAttribute. If the JEVisAttribute is not set the
+     * default value will be returned.
      *
-     * Will return an Exception if the JEAttributeType is not allowed unter the
-     * JEObjectType
+     * Will return an Exception if the JEVisType is not allowed under
+     * the JEVisObjectType
      *
      * @param type
-     * @return JEAttribute from the given JEAttributeType
+     * @return JEVisAttribute from the given JEVisAttributeType
+     * @throws org.jevis.api.JEVisException
      */
     JEVisAttribute getAttribute(String type) throws JEVisException;
 
     /**
-     * Delete this JEObject on the JEVis Server. This JEObject will be set to
+     * Delete this JEVisObject on the JEVis Server. This JEVisObject will be set to
      * null and will be removed from the child list of the parent.
      *
-     * If this JEObject is an link it will only delete the link an not the
+     * If this JEVisObject is a link it will only delete the link an not the
      * linked reference.
      *
      * All linked references will also be deleted.
      *
      * @return true if the delete was successful
+     * @throws org.jevis.api.JEVisException
      */
     boolean delete() throws JEVisException;
 
     /**
-     * Build an new JEObject from the given JEObjectType and name under this
-     * JEObject.
+     * Build n new JEVisObject from the given JEVisObjectType and name under this
+     * JEVisObject.
      *
-     * Throws Exception if the JEObjectType is not allowed under this JEObject.
+     * Throws Exception if the JEVisObjectType is not allowed under this JEVisObject.
      *
-     * @param name of the new created JEObject
-     * @param type JEObjectType of the new created JEObject
-     * @return new created JEObject
+     * @param name of the new created JEVisObject
+     * @param type JEVisObjectType of the new created JEVisObject
+     * @return new created JEVisObject
+     * @throws org.jevis.api.JEVisException
      */
     JEVisObject buildObject(String name, JEVisClass type) throws JEVisException;
 
-    /**
-     * Build an new Linked Object from this Object under the given parent.
-     *
-     * @param name Name of the New linked JEVisObject
-     * @param parent Parent JEVisObject where the new linked JEVisOBject will be
-     * placed under. Parent has to be an View Directory or an other Link
-     * @return The new created link JEVisObject
-     * @throws JEVisException
-     */
-//    JEVisObject buildLink(String name, JEVisObject parent) throws JEVisException;
-    /**
-     * Check if this JEVIsObject is an link to an other JEVIsObject. An link
-     * will return the same attributes as the original linked
-     *
-     * @return
-     */
-//    boolean isLink() throws JEVisException;
     /**
      * Get the JEVisObject this JEVisObject points to
      *
@@ -195,17 +186,18 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     JEVisObject getLinkedObject() throws JEVisException;
 
     /**
-     * Create an commit an new Relationship
+     * Create and commit a new Relationship
      *
      * @param obj
      * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
      * @param direction {@link org.jevis.jeapi.JEVisConstants.Direction}
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisRelationship buildRelationship(JEVisObject obj, int type, int direction) throws JEVisException;
 
     /**
-     * Delete an relationship for this object
+     * Delete a relationship for this object
      *
      * @param rel
      * @throws JEVisException
@@ -241,7 +233,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     List<JEVisRelationship> getRelationships(int type, int direction) throws JEVisException;
 
     /**
-     * Return an list of all JEVisClass who ar allowd under this Object.
+     * Return a list of all JEVisClasses who are allowed under this JEVisbject.
      *
      * @return
      * @throws JEVisException
@@ -249,7 +241,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     List<JEVisClass> getAllowedChildrenClasses() throws JEVisException;
 
     /**
-     * Ceck if this object is allowed under thje given object.
+     * Check if this object is allowed under the given object.
      *
      * @param otherObject
      * @return true if the object is allowed under the other object

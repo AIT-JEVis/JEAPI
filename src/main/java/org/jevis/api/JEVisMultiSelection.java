@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
  *
- * This file is part of JECAPI.
+ * This file is part of JEAPI.
  *
  * JEAPI is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software

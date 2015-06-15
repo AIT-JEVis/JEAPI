@@ -12,7 +12,7 @@
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * JECAPI. If not, see <http://www.gnu.org/licenses/>.
+ * JEAPI. If not, see <http://www.gnu.org/licenses/>.
  *
  * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
@@ -20,7 +20,7 @@
 package org.jevis.api;
 
 /**
- * This interface models the an relationship between two JEVisClasses
+ * This interface models the relationship between two JEVisClasses
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
@@ -61,6 +61,7 @@ public interface JEVisClassRelationship extends JEVisComponent {
     /**
      * Returns the other JEVIClass
      *
+     * @param jclass
      * @return the other JEVIClass
      * @throws JEVisException
      */
@@ -69,13 +70,14 @@ public interface JEVisClassRelationship extends JEVisComponent {
     /**
      * Check the type
      *
+     * @param type The type to compare to
      * @return <CODE>true</CODE> if its the same type
      * @throws JEVisException
      */
     boolean isType(int type) throws JEVisException;
 
     /**
-     * return if this Relationship is inherited from an other class
+     * return if this Relationship is inherited from another class
      *
      * @return CODE>true</CODE> if is inherited
      * @throws JEVisException

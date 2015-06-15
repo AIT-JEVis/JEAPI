@@ -12,7 +12,7 @@
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * JECAPI. If not, see <http://www.gnu.org/licenses/>.
+ * JEAPI. If not, see <http://www.gnu.org/licenses/>.
  *
  * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
@@ -30,17 +30,18 @@ import java.util.List;
 public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable<JEVisClass> {
 
     /**
-     * Set the name of this JEVisClass. The Class has to be unique.
-     *
+     * Get the name of this JEVisClass. Every class-name is unique.
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     String getName() throws JEVisException;
 
     /**
-     * Set The Name of this Class. Every class name is unique
+     * Set The name of this JEVisClass. The class-name has to be unique.
      *
      * @param name
+     * @throws org.jevis.api.JEVisException
      */
     void setName(String name) throws JEVisException;
 
@@ -48,6 +49,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Get the Icon representing this JEVisClass.
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     BufferedImage getIcon() throws JEVisException;
 
@@ -55,6 +57,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Set the Icon representing this JEVisClass
      *
      * @param icon
+     * @throws org.jevis.api.JEVisException
      */
     void setIcon(BufferedImage icon) throws JEVisException;
 
@@ -62,14 +65,16 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Set the Icon representing this JEVisClass
      *
      * @param icon
+     * @throws org.jevis.api.JEVisException
      */
     void setIcon(File icon) throws JEVisException;
 
     /**
-     * Get the descrition for this JEVisClass. THe description is an help text
+     * Get the description for this JEVisClass. The description is a help text
      * for the end user.
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     String getDescription() throws JEVisException;
 
@@ -77,39 +82,44 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Set the description for this JEVisClass.
      *
      * @param discription
+     * @throws org.jevis.api.JEVisException
      */
     void setDescription(String discription) throws JEVisException;
 
     /**
-     * Get all type whiche are present for this JEVisClass
+     * Get all types which are present for this JEVisClass
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisType> getTypes() throws JEVisException;
 
     /**
-     * Get an spezific type by its unique name.
+     * Get a specific type by its unique name.
      *
      * @param typename
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisType getType(String typename) throws JEVisException;
 
     /**
-     * Build and add an new type under this JEVisClass. Every type has to be
-     * unique under an JEVisClass.
+     * Build and add a new type under this JEVisClass. Every type has to be
+     * unique under a JEVisClass.
      *
      * @param name
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     JEVisType buildType(String name) throws JEVisException;
 
     /**
-     * Get the inheritance class. This JEVisClass will inherit all types for all
-     * inheritance. If the JEVIsClass does not need an inheritance it will
+     * Get the inheritance class. This JEVisClass will inherit all types from
+     * the parent class. If the JEVIsClass does not have an inheritance it will
      * return NULL
      *
-     * @return inheritance JEVisClass, null if it does not have an inheritance
+     * @return Inheritance JEVisClass, null if it does not have an inheritance
+     * @throws org.jevis.api.JEVisException
      */
     JEVisClass getInheritance() throws JEVisException;
 
@@ -117,13 +127,15 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Get all heir classes.
      *
      * @return List of the heirs of this JEVisClass
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisClass> getHeirs() throws JEVisException;
 
     /**
      * Get the list of all parents this class is allowed under
      *
-     * @return list of valid parents, emty list if non exist
+     * @return List of valid parents, empty list if none exists
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisClass> getValidParents() throws JEVisException;
 
@@ -132,21 +144,24 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      *
      * @param jevisClass
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     boolean isAllowedUnder(JEVisClass jevisClass) throws JEVisException;
 
     /**
-     * Check if thes JEVisClass has to be unique under one JEVisObject. This
-     * funktion allwes to control the structure of the JEVis tree
+     * Check if this JEVisClass has to be unique under one JEVisObject. This
+     * function allows to control the structure of the JEVis tree
      *
      * @return
+     * @throws org.jevis.api.JEVisException
      */
     boolean isUnique() throws JEVisException;
 
     /**
-     * Set if the JEVisClass is unique under an other JEVisObject
+     * Set if the JEVisClass is unique under another JEVisObject
      *
      * @param unique
+     * @throws org.jevis.api.JEVisException
      */
     void setUnique(boolean unique) throws JEVisException;
 
@@ -154,15 +169,15 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Delete this JEVisClass.
      *
      * @return
-     * @throws JEVisException
+     * @throws org.jevis.api.JEVisException
      */
     boolean delete() throws JEVisException;
 
     /**
      * Return all relationships this class has
      *
-     * @return all relationships
-     * @throws JEVisException
+     * @return A list of relationships
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisClassRelationship> getRelationships() throws JEVisException;
 
@@ -171,7 +186,7 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      *
      * @param type
      * @return all relationships from the given type
-     * @throws JEVisException
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisClassRelationship> getRelationships(int type) throws JEVisException;
 
@@ -179,25 +194,26 @@ public interface JEVisClass extends JEVisComponent, JEVisCommittable, Comparable
      * Return all relationships from the given type and direction
      *
      * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
-     * @param direction if Forward the he Class has to be the start, if Backward
+     * @param direction if Forward this class has to be the start, if Backward
      * the class has to be the end
      * @return all relationships from the given type and direction
-     * @throws JEVisException
+     * @throws org.jevis.api.JEVisException
      */
     List<JEVisClassRelationship> getRelationships(int type, int direction) throws JEVisException;
 
     /**
-     * Create and commit relationship an other JEVisClayss
+     * Create and commit relationship to another JEVisClass
      *
-     * @param obj
+     * @param jclass
      * @param type {@link org.jevis.jeapi.JEVisConstants.Relationship}
      * @param direction {@link org.jevis.jeapi.JEVisConstants.Direction}
      * @return the new relationship
+     * @throws org.jevis.api.JEVisException
      */
     JEVisClassRelationship buildRelationship(JEVisClass jclass, int type, int direction) throws JEVisException;
 
     /**
-     * Delete an relationship for this class
+     * Delete a relationship for this class
      *
      * @param rel
      * @throws JEVisException

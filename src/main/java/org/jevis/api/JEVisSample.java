@@ -3,11 +3,11 @@
  *
  * This file is part of JEAPI.
  *
- * JAPI is free software: you can redistribute it and/or modify it under the
+ * JEAPI is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
  * Foundation in version 3.
  *
- * JAPI is distributed in the hope that it will be useful, but WITHOUT ANY
+ * JEAPI is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
@@ -19,7 +19,6 @@
  */
 package org.jevis.api;
 
-import javax.measure.unit.Unit;
 import org.joda.time.DateTime;
 
 /**
@@ -32,6 +31,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * Returns the sample's timestamp
      *
      * @return JevCalendar timestamp
+     * @throws org.jevis.api.JEVisException
      */
     DateTime getTimestamp() throws JEVisException;
 
@@ -39,11 +39,12 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
      * Returns the sample's value
      *
      * @return value of generic type T
+     * @throws org.jevis.api.JEVisException
      */
     Object getValue() throws JEVisException;
 
     /**
-     * Retuns an String representation of this string.
+     * Returns a String representation of the value.
      *
      * @return
      * @throws JEVisException
@@ -51,7 +52,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     String getValueAsString() throws JEVisException;
 
     /**
-     * Retunrs an long representaion of the value.
+     * Returns a long representation of the value.
      *
      * @return
      * @throws JEVisException
@@ -68,7 +69,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     Long getValueAsLong(JEVisUnit unit) throws JEVisException;
 
     /**
-     * Returns an double representation of the value.
+     * Returns a double representation of the value.
      *
      * @return
      * @throws JEVisException
@@ -85,7 +86,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     Double getValueAsDouble(JEVisUnit unit) throws JEVisException;
 
     /**
-     * Returns an boolean represenation of the value.
+     * Returns a boolean representation of the value.
      *
      * @return
      * @throws JEVisException
@@ -93,7 +94,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     Boolean getValueAsBoolean() throws JEVisException;
 
     /**
-     * Returns an JEVisFile representaion of this value.
+     * Returns a JEVisFile representation of this value.
      *
      * @return
      * @throws JEVisException
@@ -101,7 +102,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     JEVisFile getValueAsFile() throws JEVisException;
 
     /**
-     * Returns an JEVisSelection representaion of this value.
+     * Returns a JEVisSelection representation of this value.
      *
      * @return
      * @throws JEVisException
@@ -109,7 +110,7 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     JEVisSelection getValueAsSelection() throws JEVisException;
 
     /**
-     * Returns an JEVisMultiSelection representaion of this sample.
+     * Returns a JEVisMultiSelection representation of this sample.
      *
      * @return
      * @throws JEVisException
@@ -117,41 +118,46 @@ public interface JEVisSample extends JEVisComponent, JEVisCommittable {
     JEVisMultiSelection getValueAsMultiSelection() throws JEVisException;
 
     /**
-     * Set the value of this sample. The value has to be in default unit of the
-     * attribute
+     * Set the value of this sample. The value has to be in the default unit of
+     * the attribute
      *
      * @param value can be()
+     * @throws org.jevis.api.JEVisException
      * @throws ClassCastException
      */
     void setValue(Object value) throws JEVisException, ClassCastException;
 
     /**
-     * Set the value of this samplein the given unit. The JEVisSample will try
-     * to convert the value to the daukt value for storage.
+     * Set the value of this sample in the given unit. JEVisSample will try
+     * to convert the value from the given unit to the set value for storage.
      *
-     * @param value
-     * @param unit
+     * @param value The value to set this sample to
+     * @param unit The unit of the given value
+     * @throws org.jevis.api.JEVisException
      */
     void setValue(Object value, JEVisUnit unit) throws JEVisException, ClassCastException;
 
     /**
-     *
+     * Get the attribute for this sample.
+     * 
      * @return
+     * @throws org.jevis.api.JEVisException
      */
-//    JEVisManipulation getManipulation(); 
     JEVisAttribute getAttribute() throws JEVisException;
 
     /**
-     * An human readable note for this sample.
+     * Get the human readable note for this sample.
      *
-     * @return
+     * @return The human readable note for this sample.
+     * @throws org.jevis.api.JEVisException
      */
     String getNote() throws JEVisException;
 
     /**
-     * Set the human readable note for thi sample
+     * Set the human readable note for this sample
      *
      * @param note
+     * @throws org.jevis.api.JEVisException
      */
     void setNote(String note) throws JEVisException;
 

@@ -1,28 +1,27 @@
 /**
- * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
  *
- * This file is part of JECAPI.
+ * This file is part of JEAPI.
  *
- * JECAPI is free software: you can redistribute it and/or modify it under the
+ * JEAPI is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software
  * Foundation in version 3.
  *
- * JECAPI is distributed in the hope that it will be useful, but WITHOUT ANY
+ * JEAPI is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * JECAPI. If not, see <http://www.gnu.org/licenses/>.
+ * JEAPI. If not, see <http://www.gnu.org/licenses/>.
  *
- * JECAPI is part of the OpenJEVis project, further project information are
+ * JEAPI is part of the OpenJEVis project, further project information are
  * published at <http://www.OpenJEVis.org/>.
  */
 package org.jevis.api;
 
-import org.joda.time.Period;
 
 /**
- * The JEVisUnit class handels the converting and labeling of the JEVisSamples
+ * The JEVisUnit class handles the converting and labeling of the JEVisSamples
  * values.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -52,7 +51,7 @@ public interface JEVisUnit {
     void setLabel(String label);
 
     /**
-     * Convert an double value with this unit into the given unit.
+     * Convert a double value with this unit into the given unit.
      *
      * @param unit unit to convert to
      * @param number number to convert
@@ -69,7 +68,7 @@ public interface JEVisUnit {
     JEVisUnit plus(double offset);
 
     /**
-     * Retuns an new Unit with the unit multiplying with the factor
+     * Returns a new Unit with the unit multiplied with the factor
      *
      * @param factor
      * @return
@@ -77,7 +76,7 @@ public interface JEVisUnit {
     JEVisUnit times(double factor);
 
     /**
-     * Returns an product with this unit combined with the specified.
+     * Returns a product with this unit combined with the specified.
      *
      * @param factor
      * @return
@@ -85,7 +84,7 @@ public interface JEVisUnit {
     JEVisUnit times(JEVisUnit factor);
 
     /**
-     * Returns an new Unit as an result of this unit deviedby the factor.
+     * Returns an new Unit as an result of this unit divided by the factor.
      *
      * @param factor
      * @return
@@ -93,7 +92,7 @@ public interface JEVisUnit {
     JEVisUnit divide(double factor);
 
     /**
-     * Returns an new Unit as an result of this unit devied with the fator unit.
+     * Returns an new Unit as an result of this unit divided by the unit-factor.
      *
      * @param factor
      * @return
@@ -101,7 +100,7 @@ public interface JEVisUnit {
     JEVisUnit divide(JEVisUnit factor);
 
     /**
-     * Retuns true if this unit can be converted into the given unit.
+     * Returns true if this unit can be converted into the given unit.
      *
      * @param unit
      * @return
@@ -109,21 +108,21 @@ public interface JEVisUnit {
     boolean isCompatible(JEVisUnit unit);
 
     /**
-     * Set the Prefix for this Unit eg. Kilo, Mega, Giga...
+     * Set the Prefix for this Unit eg. KILO, MEGA, GIGA, ...
      *
      * @param prefix
      */
     void setPrefix(Prefix prefix);
 
     /**
-     * Retuns the current Prefix of this unit
+     * Returns the current Prefix of this unit
      *
      * @return Prefix for unit, returns Prefix.NONE if no prefix is set
      */
     Prefix getPrefix();
 
     /**
-     * Returns an JSON replresentaion of this Unit.
+     * Returns a JSON representation of this Unit.
      *
      * @deprecated be careful using this function because it could be a
      * temporary solution until the JEVisUnit design is final

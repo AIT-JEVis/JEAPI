@@ -28,30 +28,19 @@ import java.util.List;
 public interface JEVisDataSource {
 
     /**
-     * Build an JEVisClass with the given name.
+     * Build a JEVisClass with the given name.
      *
-     * @param name of the class. The has to be unique on the system.
+     * @param name of the class. The class has to be unique on the system.
      * @return JEVisClass
      * @throws JEVisException
      */
     JEVisClass buildClass(String name) throws JEVisException;
 
     /**
-     * Build an other JEVisObject
-     *
-     * @param name of the JEVisObject
-     * @param parent JEVisObject where the new will be createtd under.
-     * @param jclass
-     * @return
-     * @throws JEVisException
-     */
-    //will be handelt by the JEVisOBject him self
-//    JEVisObject buildObject(String name, JEVisObject parentObj, JEVisClass jclass) throws JEVisException;
-    /**
-     * Create an Symbolic link to an JEVisObject
+     * Create a symbolic link to a JEVisObject
      *
      * @param name Name of the new created link.
-     * @param parent Parent JEVisObject under which the new Link will be created
+     * @param parent Parent JEVisObject under which the new link will be created
      * @param linkedObject Target JEVisObject where the link links to
      * @return
      * @throws JEVisException
@@ -59,25 +48,25 @@ public interface JEVisDataSource {
     JEVisObject buildLink(String name, JEVisObject parent, JEVisObject linkedObject) throws JEVisException;
 
     /**
-     * Get all Root Objects for the Current user.
+     * Get all root objects for the current user.
      *
-     * @return List of all JEVisObjects
+     * @return List of all root-JEVisObjects
      * @throws JEVisException
      */
     List<JEVisObject> getRootObjects() throws JEVisException;
 
     /**
-     * Get all JEVisObject from a JEVisClass
+     * Get all JEVisObjects from a JEVisClass
      *
-     * @param JEVisClass filter
-     * @param addheirs if true all heirs of the JEVisClass will also be includet
+     * @param jevisClass
+     * @param addheirs if true all heirs of the JEVisClass will also be included
      * @return
      * @throws JEVisException
      */
     List<JEVisObject> getObjects(JEVisClass jevisClass, boolean addheirs) throws JEVisException;
 
     /**
-     * Get an JEVisObject by its unique ID
+     * Get a JEVisObject by its unique ID
      *
      * @param id
      * @return
@@ -86,9 +75,9 @@ public interface JEVisDataSource {
     JEVisObject getObject(Long id) throws JEVisException;
 
     /**
-     * Get an JEVisClass by its Name
+     * Get a JEVisClass by its name
      *
-     * @param name of the JEVisClass
+     * @param name Name of the JEVisClass
      * @return
      * @throws JEVisException
      */
@@ -102,42 +91,16 @@ public interface JEVisDataSource {
      */
     List<JEVisClass> getJEVisClasses() throws JEVisException;
 
-//    /**
-//     * Get an JEVisGroup by its unique ID
-//     *
-//     * @param group
-//     * @return
-//     * @throws JEVisException
-//     */
-//    JEVisGroup getGroup(long group) throws JEVisException;
-//
-//    /**
-//     * Get an JEVisUser by its unique Name
-//     *
-//     * @param name
-//     * @return
-//     * @throws JEVisException
-//     */
-//    JEVisUser getUser(String name) throws JEVisException;
-//
-//    /**
-//     * Create an new JEVIsUser and an matching JEVisObject
-//     *
-//     * @param name of the new User. Has to be unique
-//     * @param parent where the user JEVisObject is stored under
-//     * @return
-//     * @throws JEVisException
-//     */
-//    JEVisUser buildUser(String name, JEVisObject parent) throws JEVisException;
     /**
-     * Return the current user logedin.
+     * Return the user currently logged in.
      *
      * @return
+     * @throws JEVisException
      */
     JEVisObject getCurrentUser() throws JEVisException;
 
     /**
-     * Returns all relationships of a sertain type.
+     * Returns all relationships of a certain type.
      *
      * @param type type of the relationship
      * @see JEVisConstants
@@ -147,7 +110,7 @@ public interface JEVisDataSource {
     List<JEVisRelationship> getReplationships(int type) throws JEVisException;
 
     /**
-     * Connect to the DataSource as an JEVis user
+     * Connect to the DataSource as a JEVis user
      *
      * @param username
      * @param password
@@ -157,7 +120,7 @@ public interface JEVisDataSource {
     boolean connect(String username, String password) throws JEVisException;
 
     /**
-     * Close the Datasource connection
+     * Close the DataSource connection
      *
      * @return
      * @throws JEVisException
@@ -173,14 +136,15 @@ public interface JEVisDataSource {
     boolean reconnect() throws JEVisException;
 
     /**
-     * Return the JEAPI implementaion infos like name & version number
+     * Return the JEAPI implementation informations like name & version number
      *
      * @return
      */
     JEVisInfo getInfo();
 
     /**
-     * returns true is the connection is still alive
+     * Check if the connection is still alive
+     * returns true if is the connection is still alive
      *
      * @return
      * @throws JEVisException
@@ -188,9 +152,9 @@ public interface JEVisDataSource {
     boolean isConnectionAlive() throws JEVisException;
 
     /**
-     * Returns an list of all additional JEVisUnits installed on this system.
-     * The static default list of the most kommon units can be found in the
-     * JECommonss.s
+     * Returns a list of all additional JEVisUnits installed on this system.
+     * The static default list of the most common units can be found in the
+     * project JECommons.
      *
      * @return list of all additional JEVisUnits
      */

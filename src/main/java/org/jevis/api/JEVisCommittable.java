@@ -33,14 +33,14 @@ public interface JEVisCommittable {
     void commit() throws JEVisException;
 
     /**
-     * Rollback the last changes until the last commit
+     * Rollback the changes until the last commit
      *
      * @throws JEVisException
      */
     void rollBack() throws JEVisException;
 
     /**
-     * Returns of the Object has changed
+     * Returns if the Object has changed
      *
      * @return
      */
