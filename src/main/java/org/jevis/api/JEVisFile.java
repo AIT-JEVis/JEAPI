@@ -40,10 +40,8 @@ public interface JEVisFile {
 
     void setFilename(String name);
 
-    void setFileExtension(String extension);
-
     String getFileExtension();
-    //TODO: ? is encoding come object? 
+    //TODO: ? is encoding come object?
 //    void setEncoding(String encoding);
 //    String getEncoding();
 }
