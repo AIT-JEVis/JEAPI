@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
@@ -22,10 +22,34 @@ package org.jevis.api;
 import java.util.List;
 
 /**
+ * The JEVisDataSource handels the communication between the Server and client.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
 public interface JEVisDataSource {
+
+    /**
+     * Initialize the datasource with the given configuration, will overwrite
+     * the existing configuration
+     *
+     * @param config
+     * @throws IllegalArgumentException
+     */
+    void init(JEVisConfiguration config) throws IllegalArgumentException;
+
+    /**
+     * Returns the configuration is use.
+     *
+     * @return
+     */
+    JEVisConfiguration getConfiguration();
+
+    /**
+     * Replace the current configuration
+     *
+     * @param config
+     */
+    void setConfiguration(JEVisConfiguration config);
 
     /**
      * Build a JEVisClass with the given name.
@@ -143,8 +167,8 @@ public interface JEVisDataSource {
     JEVisInfo getInfo();
 
     /**
-     * Check if the connection is still alive
-     * returns true if is the connection is still alive
+     * Check if the connection is still alive returns true if is the connection
+     * is still alive
      *
      * @return
      * @throws JEVisException
@@ -152,9 +176,9 @@ public interface JEVisDataSource {
     boolean isConnectionAlive() throws JEVisException;
 
     /**
-     * Returns a list of all additional JEVisUnits installed on this system.
-     * The static default list of the most common units can be found in the
-     * project JECommons.
+     * Returns a list of all additional JEVisUnits installed on this system. The
+     * static default list of the most common units can be found in the project
+     * JECommons.
      *
      * @return list of all additional JEVisUnits
      */
