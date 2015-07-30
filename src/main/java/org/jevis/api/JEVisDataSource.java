@@ -22,7 +22,7 @@ package org.jevis.api;
 import java.util.List;
 
 /**
- * The JEVisDataSource handels the communication between the Server and client.
+ * The JEVisDataSource handles the communication between the Server and client.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
@@ -38,7 +38,7 @@ public interface JEVisDataSource {
     void init(JEVisConfiguration config) throws IllegalArgumentException;
 
     /**
-     * Returns the configuration is use.
+     * Returns the configuration in use.
      *
      * @return
      */
@@ -167,7 +167,7 @@ public interface JEVisDataSource {
     JEVisInfo getInfo();
 
     /**
-     * Check if the connection is still alive returns true if is the connection
+     * Check if the connection is still alive returns true if the connection
      * is still alive
      *
      * @return
