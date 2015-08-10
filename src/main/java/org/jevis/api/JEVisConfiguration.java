@@ -22,14 +22,14 @@ package org.jevis.api;
 import java.util.List;
 
 /**
- * Interface to hold the configuration of an JEVisDataSource
+ * Interface to hold the configuration of a JEVisDataSource
  *
  * @author Florian Simon
  */
 public interface JEVisConfiguration {
 
     /**
-     * Return true if the Configuraion hold this option.
+     * Return true if the configuration holds this option.
      *
      * @param group
      * @param key
@@ -38,7 +38,7 @@ public interface JEVisConfiguration {
     boolean hasOption(String group, String key);
 
     /**
-     * Return true if the Configuraion hold this option.
+     * Return true if the configuration holds this option.
      *
      * @param option
      * @return
@@ -50,13 +50,13 @@ public interface JEVisConfiguration {
      *
      * @param group
      * @param key
-     * @return the option with the given option-group and key, returns an emty
-     * option if it not exists.
+     * @return the option with the given option-group and key, returns an empty
+     * option if the group/key does not exists.
      */
     JEVisOption getOption(String group, String key);
 
     /**
-     * returns the Option thw the same group and key as the given option if it
+     * returns the option the same group and key as the given option if it
      * exists.
      *
      * @param option Option to compare group and key to
@@ -65,24 +65,24 @@ public interface JEVisConfiguration {
     JEVisOption getOption(JEVisOption option);
 
     /**
-     * retrun the complite list of all options.
+     * return the complete list of all options.
      *
      * @return
      */
     List<JEVisOption> getOptions();
 
     /**
-     * Add an new option.
+     * Add a new option.
      *
      * @param option option to add
-     * @param overwrite if true the option will overwrite an existin option with
+     * @param overwrite if true the option will overwrite an existing option with
      * the same key/group
      */
     void addOption(JEVisOption option, boolean overwrite);
 
     /**
-     * Combines this configuration with an other configuration. Existin option
-     * in this configuration will not be overwriten.
+     * Combines this configuration with another configuration. Existing option
+     * in this configuration will not be overwritten.
      *
      * @param other
      */

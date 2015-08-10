@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2014 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
@@ -22,9 +22,9 @@ package org.jevis.api;
 import java.util.List;
 
 /**
- * This interface represents an JEVis Object.
+ * This interface represents a JEVis Object.
  *
- * Examples for an object are a customer, a measurement device or a building. An
+ * Examples for an object are a customer, a measurement device or a building. A
  * JEVisObject cannot store any samples. Measurable attributes of an object like
  * the build year of an building are stored in JEVisAttribute.
  *
@@ -35,7 +35,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
     /**
      * Returns the name of the JEVisObject entity as String.
      *
-     * Names are not unique in the JEVis system. For an unique use the ID.
+     * Names are not unique in the JEVis system. For a unique identifier use the ID.
      *
      * @return Name as String
      */
@@ -54,7 +54,7 @@ public interface JEVisObject extends JEVisComponent, JEVisCommittable, Comparabl
      * appear twice on the same JEVis server. Its possible and very likely that
      * the same ID appear on different JEVis server.
      *
-     * The ID cannot be set by the client an will be given from the server.
+     * The ID cannot be set by the client and will be given from the server.
      *
      * @return identifier as Long
      */
