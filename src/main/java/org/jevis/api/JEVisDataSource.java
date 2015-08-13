@@ -35,21 +35,21 @@ public interface JEVisDataSource {
      * @param config
      * @throws IllegalArgumentException
      */
-    void init(JEVisConfiguration config) throws IllegalArgumentException;
+    void init(List<JEVisOption> config) throws IllegalArgumentException;
 
     /**
      * Returns the configuration in use.
      *
      * @return
      */
-    JEVisConfiguration getConfiguration();
+    List<JEVisOption> getConfiguration();
 
     /**
      * Replace the current configuration
      *
      * @param config
      */
-    void setConfiguration(JEVisConfiguration config);
+    void setConfiguration(List<JEVisOption> config);
 
     /**
      * Build a JEVisClass with the given name.
@@ -167,8 +167,8 @@ public interface JEVisDataSource {
     JEVisInfo getInfo();
 
     /**
-     * Check if the connection is still alive returns true if the connection
-     * is still alive
+     * Check if the connection is still alive returns true if the connection is
+     * still alive
      *
      * @return
      * @throws JEVisException
