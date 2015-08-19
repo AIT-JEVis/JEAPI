@@ -20,6 +20,8 @@
 package org.jevis.api;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Container to store some comment configuration values. this will be used for
@@ -27,6 +29,7 @@ import java.util.List;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
+@XmlRootElement(name = "Option")
 public interface JEVisOption {
 
     /**
@@ -35,6 +38,7 @@ public interface JEVisOption {
      *
      * @return parent option or null
      */
+    @XmlElement(name = "parent")
     JEVisOption getParent();
 
     /**
@@ -42,6 +46,7 @@ public interface JEVisOption {
      *
      * @return
      */
+    @XmlElement(name = "options")
     List<JEVisOption> getChildren();
 
     /**
@@ -73,6 +78,7 @@ public interface JEVisOption {
      *
      * @return
      */
+    @XmlElement(name = "value")
     String getValue();
 
     /**
@@ -87,6 +93,7 @@ public interface JEVisOption {
      *
      * @return
      */
+    @XmlElement(name = "key")
     String getKey();
 
     /**
@@ -100,10 +107,11 @@ public interface JEVisOption {
     void setKey(String key);
 
     /**
-     * return if this option necessary
+     * Return true if this option required
      *
      * @return
      */
+    @XmlElement(name = "required")
     boolean isRequired();
 
     /**
@@ -114,10 +122,11 @@ public interface JEVisOption {
     void setRequired(boolean required);
 
     /**
-     * returns an human readable descripion
+     * Returns an human readable descripion
      *
      * @return
      */
+    @XmlElement(name = "description")
     String getDescription();
 
     /**

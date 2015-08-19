@@ -24,8 +24,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 /**
- * The JEVisAttribute is the basis of a JEVisType. A JEVisAttribute is
- * always unique under a JEVisObject. The attribute will be configured by its
+ * The JEVisAttribute is the basis of a JEVisType. A JEVisAttribute is always
+ * unique under a JEVisObject. The attribute will be configured by its
  * JEVisType.
  *
  * @author Florian Simon <florian.simon@envidatec.com>
@@ -261,5 +261,27 @@ public interface JEVisAttribute extends JEVisComponent, JEVisCommittable, Compar
      * @return
      */
     long getSampleCount();
+
+    /**
+     * Get all additonal options for this attribute.
+     *
+     * @return list of all options
+     */
+    List<JEVisOption> getOptions();
+
+    /**
+     * Add an new option to this attribute. Will overwrite an existion option
+     * wthe the same name
+     *
+     * @param option
+     */
+    void addOption(JEVisOption option);
+
+    /**
+     * Remove an option from this attribute.
+     *
+     * @param option
+     */
+    void removeOption(JEVisOption option);
 
 }
