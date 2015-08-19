@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Container to store some comment configuration values. this will be used for
- * the configuration of the JEVisDatasource, localization, MetaData and so on
+ * Container to store some common configuration values. This will be used for
+ * the configuration of JEVisDatasource, localization, MetaData and so on
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public interface JEVisOption {
 
     /**
-     * Get the parent option. JEVisOptions can be organized in an tree structure
+     * Get the parent option. JEVisOptions can be organized in a tree structure
      * where every option can have one parent and unlimited children
      *
      * @return parent option or null
@@ -42,7 +42,7 @@ public interface JEVisOption {
     JEVisOption getParent();
 
     /**
-     * Get an list with all children options
+     * Get a list with all children options
      *
      * @return
      */
@@ -50,7 +50,7 @@ public interface JEVisOption {
     List<JEVisOption> getChildren();
 
     /**
-     * returns an single option by name
+     * returns a single option by name
      *
      * @param optionName
      * @return
@@ -58,23 +58,23 @@ public interface JEVisOption {
     JEVisOption getChildren(String optionName);
 
     /**
-     * returns if this option has an child with the given name,
+     * returns if this option has a child with the given name,
      *
      * @param optionName
-     * @return true if the option existis, false if not
+     * @return true if the option exists, false if not
      */
     boolean hasChildren(String optionName);
 
     /**
-     * Add an new child option to this option.
+     * Add a new child option to this option.
      *
      * @param option new child option
-     * @param overwrite if true overwrite the allready existing option.
+     * @param overwrite if true overwrite the already existing option.
      */
     void addChildren(JEVisOption option, boolean overwrite);
 
     /**
-     * returns the vlaue for this option
+     * returns the value for this option
      *
      * @return
      */
@@ -82,7 +82,7 @@ public interface JEVisOption {
     String getValue();
 
     /**
-     * Sset the vlaue for this option
+     * Set the value for this option
      *
      * @param value
      */
@@ -99,8 +99,8 @@ public interface JEVisOption {
     /**
      * Set the key of this option
      *
-     * @TODO: maybe this funktion is not save because the parent cannot check if
-     * the open is allready in use. better use the constructor and add to check
+     * @TODO: maybe this function is not save because the parent cannot check if
+     * the open is already in use. Better use the constructor and add to check
      * this
      * @param key
      */
@@ -130,7 +130,7 @@ public interface JEVisOption {
     String getDescription();
 
     /**
-     * Set the human readable descripion
+     * Set the human readable description
      *
      * @param description
      */
