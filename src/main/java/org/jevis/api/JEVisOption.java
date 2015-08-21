@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2015 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
@@ -20,8 +20,6 @@
 package org.jevis.api;
 
 import java.util.List;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Container to store some common configuration values. This will be used for
@@ -29,24 +27,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-@XmlRootElement(name = "Option")
 public interface JEVisOption {
-
-    /**
-     * Get the parent option. JEVisOptions can be organized in a tree structure
-     * where every option can have one parent and unlimited children
-     *
-     * @return parent option or null
-     */
-    @XmlElement(name = "parent")
-    JEVisOption getParent();
 
     /**
      * Get a list with all children options
      *
      * @return
      */
-    @XmlElement(name = "options")
     List<JEVisOption> getChildren();
 
     /**
@@ -55,7 +42,7 @@ public interface JEVisOption {
      * @param optionName
      * @return
      */
-    JEVisOption getChildren(String optionName);
+    JEVisOption getOption(String optionName);
 
     /**
      * returns if this option has a child with the given name,
@@ -63,7 +50,7 @@ public interface JEVisOption {
      * @param optionName
      * @return true if the option exists, false if not
      */
-    boolean hasChildren(String optionName);
+    boolean hasOption(String optionName);
 
     /**
      * Add a new child option to this option.
@@ -71,14 +58,20 @@ public interface JEVisOption {
      * @param option new child option
      * @param overwrite if true overwrite the already existing option.
      */
-    void addChildren(JEVisOption option, boolean overwrite);
+    void addOption(JEVisOption option, boolean overwrite);
+
+    /**
+     * Remove and option from this option.
+     *
+     * @param option
+     */
+    void removeOption(JEVisOption option);
 
     /**
      * returns the value for this option
      *
      * @return
      */
-    @XmlElement(name = "value")
     String getValue();
 
     /**
@@ -93,7 +86,6 @@ public interface JEVisOption {
      *
      * @return
      */
-    @XmlElement(name = "key")
     String getKey();
 
     /**
@@ -111,7 +103,6 @@ public interface JEVisOption {
      *
      * @return
      */
-    @XmlElement(name = "required")
     boolean isRequired();
 
     /**
@@ -126,7 +117,6 @@ public interface JEVisOption {
      *
      * @return
      */
-    @XmlElement(name = "description")
     String getDescription();
 
     /**
