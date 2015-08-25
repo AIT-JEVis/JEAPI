@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2015 Envidatec GmbH <info@envidatec.com>
+ * Copyright (C) 2015 Envidatec GmbH <info@envidatec.com>
  *
  * This file is part of JEAPI.
  *
@@ -20,69 +20,62 @@
 package org.jevis.api;
 
 import java.util.List;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Container to store some comment configuration values. this will be used for
- * the configuration of the JEVisDatasource, localization, MetaData and so on
+ * Container to store some common configuration values. This will be used for
+ * the configuration of JEVisDatasource, localization, MetaData and so on
  *
  * @author Florian Simon <florian.simon@envidatec.com>
  */
-@XmlRootElement(name = "Option")
 public interface JEVisOption {
 
     /**
-     * Get the parent option. JEVisOptions can be organized in an tree structure
-     * where every option can have one parent and unlimited children
-     *
-     * @return parent option or null
-     */
-    @XmlElement(name = "parent")
-    JEVisOption getParent();
-
-    /**
-     * Get an list with all children options
+     * Get a list with all children options
      *
      * @return
      */
-    @XmlElement(name = "options")
-    List<JEVisOption> getChildren();
+    List<JEVisOption> getOptions();
 
     /**
-     * returns an single option by name
+     * returns a single option by name
      *
      * @param optionName
      * @return
      */
-    JEVisOption getChildren(String optionName);
+    JEVisOption getOption(String optionName);
 
     /**
-     * returns if this option has an child with the given name,
+     * returns if this option has a child with the given name,
      *
      * @param optionName
-     * @return true if the option existis, false if not
+     * @return true if the option exists, false if not
      */
-    boolean hasChildren(String optionName);
+    boolean hasOption(String optionName);
 
     /**
-     * Add an new child option to this option.
+     * Add a new child option to this option.
      *
      * @param option new child option
-     * @param overwrite if true overwrite the allready existing option.
+     * @param overwrite if true overwrite the already existing option.
      */
-    void addChildren(JEVisOption option, boolean overwrite);
+    void addOption(JEVisOption option, boolean overwrite);
 
     /**
-     * returns the vlaue for this option
+     * Remove and option from this option.
+     *
+     * @param option
+     */
+    void removeOption(JEVisOption option);
+
+    /**
+     * returns the value for this option
      *
      * @return
      */
-    @XmlElement(name = "value")
     String getValue();
 
     /**
-     * Sset the vlaue for this option
+     * Set the value for this option
      *
      * @param value
      */
@@ -93,44 +86,27 @@ public interface JEVisOption {
      *
      * @return
      */
-    @XmlElement(name = "key")
     String getKey();
 
     /**
      * Set the key of this option
      *
-     * @TODO: maybe this funktion is not save because the parent cannot check if
-     * the open is allready in use. better use the constructor and add to check
+     * @TODO: maybe this function is not save because the parent cannot check if
+     * the open is already in use. Better use the constructor and add to check
      * this
      * @param key
      */
     void setKey(String key);
 
     /**
-     * Return true if this option required
-     *
-     * @return
-     */
-    @XmlElement(name = "required")
-    boolean isRequired();
-
-    /**
-     * Set if this option is necessary
-     *
-     * @param required
-     */
-    void setRequired(boolean required);
-
-    /**
      * Returns an human readable descripion
      *
      * @return
      */
-    @XmlElement(name = "description")
     String getDescription();
 
     /**
-     * Set the human readable descripion
+     * Set the human readable description
      *
      * @param description
      */
