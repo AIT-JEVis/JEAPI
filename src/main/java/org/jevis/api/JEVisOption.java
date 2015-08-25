@@ -34,7 +34,7 @@ public interface JEVisOption {
      *
      * @return
      */
-    List<JEVisOption> getChildren();
+    List<JEVisOption> getOptions();
 
     /**
      * returns a single option by name
@@ -97,20 +97,6 @@ public interface JEVisOption {
      * @param key
      */
     void setKey(String key);
-
-    /**
-     * Return true if this option required
-     *
-     * @return
-     */
-    boolean isRequired();
-
-    /**
-     * Set if this option is necessary
-     *
-     * @param required
-     */
-    void setRequired(boolean required);
 
     /**
      * Returns an human readable descripion
